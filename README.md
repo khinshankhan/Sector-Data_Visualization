@@ -37,7 +37,7 @@ visualization.html
 TBA (not too clear as of yet?)
 
 #### **Possible Questions that may arise:**
-1. What was this country's population about? 
+1. What was this country's population approximately? 
 2. How does Country X's population compare to Country Y's population?
 3. How can I increase my score?
 4. Who coded this??? :heart_eyes: :heart_eyes: :heart_eyes: 
