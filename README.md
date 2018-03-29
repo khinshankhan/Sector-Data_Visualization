@@ -24,7 +24,7 @@ Shows the population of many countries. Goes from 1960 to 2016, may try to find 
 ##### **Templates:**
 
 home.html
-![Alt text](_imgs/home.png?raw=true)<!-- .element height="50%" width="50%" -->
+![Alt text](_imgs/home_fixed.png?raw=true)<!-- .element height="50%" width="50%" -->
 
 visualization.html
 ![Alt text](_imgs/visualization.png?raw=true)<!-- .element height="50%" width="50%" -->
