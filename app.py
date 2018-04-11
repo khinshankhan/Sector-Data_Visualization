@@ -12,7 +12,7 @@ def about():
 
 @app.route('/visualization')
 def visualization():
-    return render_template('visualization.html')
+    return render_template('visualization.html', dataset="the world's top 10 most populous countries")
 
 if __name__ == "__main__":
     app.debug = True
