@@ -8,12 +8,13 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}"/>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base.css') }}"/>
 
     <!-- Favicon -->
     <!-- <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon"/> -->
 
     <!-- Javascript -->
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
 
     <!-- Change the title of the page depending on what's being displayed -->
     <title>
@@ -21,13 +22,39 @@
       Placeholder title
       {% endblock %}
     </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base.css') }}"/>
+
   </head>
 
   <body>
+
     <!-- Navbar - Consistent across all pages-->
-    <nav class="navbar">
-      navbar!
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+	  <a class="navbar-brand" href="/">
+	    <img src="{{ url_for('static', filename='img/sector_transparent.png') }}" width="75" height="40" class="d-inline-block align-top" alt="">
+	  </a>
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/visualization">Visualization</a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+	  <!-- button help https://getbootstrap.com/docs/4.0/components/buttons/ -->
+          <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
     </nav>
+
     <!-- Actual Page Related-->
     <div class="header">
       {% block header %}
@@ -39,12 +66,13 @@
     </div>
 
     <!-- Footer - Consistent across all pages-->
-    <footer class="footer">
+    <footer class="fixed-bottom">
       <hr>
       <p class="footer_text">
         Copyright Σector 2018 <br />
         Produced by Σector: Kinshan Khan, Ryan Siu, James Smith, & Jake Zaia
       </p>
     </footer>
+
   </body>
 </html>
