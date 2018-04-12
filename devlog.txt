@@ -7,3 +7,6 @@ Fixed up issues, added bootstrap, made a little skeleton/ base code
 khanK -- 2018-04-11 21:25:23
 Couldn't push in class due to merge conflict & time. The base now has a mvp navbar and footer in progress. Thinking about adding snippets that user can search for.
 
+-e khanK -- 2018-04-12 14:54:04
+fixed urls and started POST structure for visualization choice
+
