@@ -1,0 +1,22 @@
+#answer_table {
+    border: solid orange 1px;
+    margin: 10px;
+    padding: 5px;
+}
+
+#answer_table tr:nth-child(even) {
+    background-color: rgba(255, 215, 0, .3);
+}
+
+#answer_table tr:nth-child(odd) {
+    background-color: rgba(23, 162, 184, .3);
+}
+
+#answer_table th {
+    background-color: rgb(255, 215, 0);
+}
+
+#answer_table .right {
+    border-left: solid orange 1px;;
+    width: 90%;
+}

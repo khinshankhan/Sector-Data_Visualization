@@ -12,7 +12,12 @@ def about():
 
 @app.route('/visualization')
 def visualization():
-    return render_template('visualization.html', dataset="the world's top 10 most populous countries")
+    '''
+    dataset_name: What the data being represented is. Must be able to fill this blank: "Can you guess ______?"
+    dataset_size: The number of answers in the dataset
+    data: A JSON object of the data
+    '''
+    return render_template('visualization.html', dataset_name="the world's top 10 most populous countries", dataset_size=10, data=None)
 
 if __name__ == "__main__":
     app.debug = True
