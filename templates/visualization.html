@@ -1,13 +1,31 @@
 {% extends 'base.html' %}
 
+{% block links_or_scripts %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/visualization.css') }}"/>
+{% endblock %}
+
 {% block c_title %}
 Sector
 {% endblock %}
 
 {% block header %}
-<h1> Can you guess <dummy id="dataset">{{dataset}}</dummy>? </h1>
+<h1> Can you guess <dummy id="dataset">{{dataset_name}}</dummy>? </h1>
 {% endblock %}
 
 {% block content %}
-<input type="textbox">
+<input  id="user_answer" type="text" placeholder="Type your answer here">
+<button id="submit" class="btn btn-info" name="submit">Submit</button>
+<br /> <br />
+
+<table id="answer_table">
+  <tr>
+    <th class="left"> Rank </th> <th class="right"> Datum </th>
+  </tr>
+  {% for i in range(dataset_size) %}
+  <tr>
+    <td class="left"> {{i + 1}} </td> <td class="right"> </td>
+  </tr>
+  {% endfor %}
+</table>
+
 {% endblock %}
