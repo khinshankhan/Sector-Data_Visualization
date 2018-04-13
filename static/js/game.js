@@ -26,29 +26,29 @@ var populateChart = function(data) {
 
   arc.append("path")
     .attr("d", path)
-    .attr("fill", function(d) { console.log(d); return color(d.index); });
+    .attr("fill", function(d) { return color(d.index); });
 
   arc.append("text")
     .attr("transform", function(d) { return "translate(" + label.centroid(d) + ")"; })
     .attr("dy", "0.35em")
-    .attr("id", function(d) { return "text-" + d.data.answer.replace(" ", "-"); });
+    .attr("id", function(d) { return "text-" + d.data.answer.replace(" ", "-").toLowerCase(); });
 
   var guess = document.getElementById("guess");
   var table = document.getElementById("answer_table");
 
   guess.addEventListener("input", function() {
     for (var d in data) {
-      if (guess.value == data[d].answer && guess.value != "") {
+      if (checkAnswer(guess.value, data[d].answer) && guess.value != "") {
 
         // handle pie chart
-        var pie_text = d3.select("#text-" + guess.value.replace(" ", "-"));
-        pie_text.text(guess.value);
+        var pie_text = d3.select("#text-" + data[d].answer.replace(" ", "-").toLowerCase());
+        pie_text.text(data[d].answer);
 
         // handle table
         var rank = parseInt(d) + 1;
         var tr = document.getElementById("tr_rank_" + rank);
         var td = tr.getElementsByClassName("right")[0];
-        td.innerHTML = guess.value;
+        td.innerHTML = data[d].answer;
 
         // handle input box
         guess.value = "";
@@ -58,4 +58,15 @@ var populateChart = function(data) {
       }
     }
   });
+}
+
+var checkAnswer = function(guess, answer) {
+  if (guess && answer) {
+    return guess == answer.toLowerCase() || guess == capitalize(answer);
+  }
+  return false;
+}
+
+var capitalize = function(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
 }
