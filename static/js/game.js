@@ -4,8 +4,6 @@ var svg = d3.select("svg"),
     radius = Math.min(width, height) / 2,
     g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
-var color = d3.scaleOrdinal(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
-
 var pie = d3.pie()
     .sort(null)
     .value(function(d) { return d.value; });
@@ -19,6 +17,8 @@ var label = d3.arc()
     .innerRadius(radius - 40);
 
 var populateChart = function(data) {
+  var color = d3.scaleSequential(d3.interpolateRainbow).domain([0, data.length]);
+
   var arc = g.selectAll(".arc")
       .data(pie(data))
       .enter().append("g")
@@ -26,7 +26,7 @@ var populateChart = function(data) {
 
   arc.append("path")
     .attr("d", path)
-    .attr("fill", function(d) { return color(d.data.answer); });
+    .attr("fill", function(d) { console.log(d); return color(d.index); });
 
   arc.append("text")
     .attr("transform", function(d) { return "translate(" + label.centroid(d) + ")"; })
