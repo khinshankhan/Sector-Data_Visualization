@@ -24,7 +24,7 @@ Sector
         <th class="left"> Rank </th> <th class="right"> Datum </th>
       </tr>
       {% for i in range(dataset_size) %}
-      <tr>
+      <tr class="tr_rank_{{ i+1 }}">
         <td class="left"> {{i + 1}} </td> <td class="right"> </td>
       </tr>
       {% endfor %}
