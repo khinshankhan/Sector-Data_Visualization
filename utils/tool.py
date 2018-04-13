@@ -1,5 +1,5 @@
 #Tool goals: converts csv to a json file with only the desired information for minimal data transfer.
-#Sources of current CSVs https://data.worldbank.org/indicator/sp.pop.totl
+#Sources of current CSVs http://worldpopulationreview.com/countries/
 
 import csv, json
 
@@ -36,7 +36,6 @@ def sort_json(file_name):
         for x in sorted(json_obj, key=lambda k: k["Population"], reverse=True):
             sorted += x
     return sorted
-
 
 if __name__ == "__main__":
     

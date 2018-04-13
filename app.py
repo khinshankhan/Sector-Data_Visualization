@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, flash
+import json
 
 app = Flask(__name__)
 
@@ -12,12 +13,10 @@ def about():
 
 @app.route('/visualization')
 def visualization():
-    '''
-    dataset_name: What the data being represented is. Must be able to fill this blank: "Can you guess ______?"
-    dataset_size: The number of answers in the dataset
-    data: A JSON object of the data
-    '''
-    return render_template('visualization.html', dataset_name="the world's top 10 most populous countries", dataset_size=10, data=None)
+    f = open("./static/data/WorldPopulation.csv")
+    content = f.read()
+    close(f)
+    return render_template('visualization.html', dataset_name="World Population", dataset_size=len(j_data), data=content)
 
 if __name__ == "__main__":
     app.debug = True
