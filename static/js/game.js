@@ -38,7 +38,7 @@ var populateChart = function(data) {
 
   guess.addEventListener("input", function() {
     for (var d in data) {
-      if (guess.value == data[d].answer) {
+      if (guess.value == data[d].answer && guess.value != "") {
 
         // handle pie chart
         var pie_text = d3.select("#text-" + guess.value.replace(" ", "-"));
