@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, flash
 
+import json
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -17,7 +19,7 @@ def visualization():
     dataset_size: The number of answers in the dataset
     data: A JSON object of the data
     '''
-    return render_template('visualization.html', dataset_name="the world's top 10 most populous countries", dataset_size=10, data=None)
+    return render_template('visualization.html', dataset_name="the world's top 10 most populous countries", dataset_size=10, data_file='WorldPopulation.csv', data=None)
 
 if __name__ == "__main__":
     app.debug = True

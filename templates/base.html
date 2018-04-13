@@ -61,13 +61,15 @@
     </nav>
 
     <!-- Actual Page Related-->
-    <div class="header">
-      {% block header %}
-      {% endblock %}
-    </div>
-    <div class="content">
-      {% block content %}
-      {% endblock %}
+    <div class="container">
+      <div class="header">
+        {% block header %}
+        {% endblock %}
+      </div>
+      <div class="content">
+        {% block content %}
+        {% endblock %}
+      </div>
     </div>
 
     <!-- Footer - Consistent across all pages-->

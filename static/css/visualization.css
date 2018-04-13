@@ -20,3 +20,12 @@
     border-left: solid orange 1px;;
     width: 90%;
 }
+
+.arc text {
+    font: 10px sans-serif;
+    text-anchor: middle;
+}
+
+.arc path {
+    stroke: #fff;
+}

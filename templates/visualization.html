@@ -2,6 +2,7 @@
 
 {% block links_or_scripts %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/visualization.css') }}"/>
+<script src="https://d3js.org/d3.v4.min.js"></script>
 {% endblock %}
 
 {% block c_title %}
@@ -13,19 +14,38 @@ Sector
 {% endblock %}
 
 {% block content %}
-<input  id="user_answer" type="text" placeholder="Type your answer here">
-<button id="submit" class="btn btn-info" name="submit">Submit</button>
-<br /> <br />
+<div class="row">
+  <div class="col-sm">
+    <input  id="guess" type="text" placeholder="Type your answer here">
+    <br /> <br />
 
-<table id="answer_table">
-  <tr>
-    <th class="left"> Rank </th> <th class="right"> Datum </th>
-  </tr>
-  {% for i in range(dataset_size) %}
-  <tr>
-    <td class="left"> {{i + 1}} </td> <td class="right"> </td>
-  </tr>
-  {% endfor %}
-</table>
+    <table id="answer_table">
+      <tr>
+        <th class="left"> Rank </th> <th class="right"> Datum </th>
+      </tr>
+      {% for i in range(dataset_size) %}
+      <tr>
+        <td class="left"> {{i + 1}} </td> <td class="right"> </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+  <div class="col-sm">
+    <svg width="500" height="500"></svg>
+  </div>
+</div>
+
+<script src={{ url_for('static', filename='js/game.js') }}></script>
+
+<script>
+  d3.csv("../../static/data/{{ data_file | safe }}", function(d) {
+    console.log(d);
+    return d;
+  }, function(error, data) {
+    if (error) throw error;
+
+    populateChart(data);
+  });
+</script>
 
 {% endblock %}
