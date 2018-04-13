@@ -39,11 +39,12 @@ Sector
 
 <script>
   d3.csv("../../static/data/{{ data_file | safe }}", function(d) {
-    console.log(d);
     return d;
   }, function(error, data) {
     if (error) throw error;
 
+    data.splice({{ dataset_size | safe }}, data.length);
+    console.log(data);
     populateChart(data);
   });
 </script>
