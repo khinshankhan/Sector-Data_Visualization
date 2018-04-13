@@ -20,7 +20,7 @@ def visualization():
     dataset_size: The number of answers in the dataset
     data: A JSON object of the data
     '''
-    return render_template('visualization.html', dataset_name="the world's top 10 most populous countries", dataset_size=10, data_file='WorldPopulation.csv')
+    return render_template('visualization.html', dataset_name="the world's top 10 most populous countries", dataset_size=10, data_file='WorldPopulation.csv', chart_name="Percentage of Population of the 10 Most Populous Countries")
 
 if __name__ == "__main__":
     app.debug = True

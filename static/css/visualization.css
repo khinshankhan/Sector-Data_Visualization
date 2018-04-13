@@ -1,6 +1,5 @@
 #answer_table {
     border: solid orange 1px;
-    margin: 10px;
     padding: 5px;
 }
 
@@ -17,8 +16,13 @@
 }
 
 #answer_table .right {
-    border-left: solid orange 1px;;
-    width: 90%;
+    border-left: solid orange 1px;
+    width: 70%;
+}
+
+#answer_table .value {
+    border-left: solid orange 1px;
+    width: 30%;
 }
 
 .arc text {

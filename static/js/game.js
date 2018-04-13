@@ -47,8 +47,10 @@ var populateChart = function(data) {
         // handle table
         var rank = parseInt(d) + 1;
         var tr = document.getElementById("tr_rank_" + rank);
-        var td = tr.getElementsByClassName("right")[0];
-        td.innerHTML = data[d].answer;
+        var answer_td = tr.getElementsByClassName("right")[0];
+        var value_td = tr.getElementsByClassName("value")[0];
+        answer_td.innerHTML = data[d].answer;
+        value_td.innerHTML = data[d].value;
 
         // handle input box
         guess.value = "";

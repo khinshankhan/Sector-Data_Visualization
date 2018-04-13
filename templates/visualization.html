@@ -16,21 +16,25 @@ Sector
 {% block content %}
 <div class="row">
   <div class="col-sm">
+    <br>
+    <label for="guess">Your Guess: </label>
     <input  id="guess" type="text" placeholder="Type your answer here">
     <br /> <br />
 
     <table id="answer_table">
       <tr>
-        <th class="left"> Rank </th> <th class="right"> Datum </th>
+        <th class="left"> Rank </th> <th class="right"> Datum </th> <th class="value"> Value </th>
       </tr>
       {% for i in range(dataset_size) %}
       <tr id="tr_rank_{{ i+1 }}">
-        <td class="left"> {{i + 1}} </td> <td class="right"> </td>
+        <td class="left"> {{i + 1}} </td> <td class="right"> </td> <td class="value"> </td>
       </tr>
       {% endfor %}
     </table>
   </div>
   <div class="col-sm">
+    <br>
+    <center><h3>{{ chart_name }}</h3></center>
     <svg width="500" height="500"></svg>
   </div>
 </div>
