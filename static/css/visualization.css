@@ -33,3 +33,7 @@
 .arc path {
     stroke: #fff;
 }
+
+#time {
+    color: red;
+}

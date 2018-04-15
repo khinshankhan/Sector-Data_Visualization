@@ -1,3 +1,5 @@
+var data;
+
 var svg = d3.select("svg"),
     width = svg.attr("width"),
     height = svg.attr("height"),
@@ -16,7 +18,9 @@ var label = d3.arc()
     .outerRadius(radius - 40)
     .innerRadius(radius - 40);
 
-var populateChart = function(data) {
+var populateChart = function(d) {
+  data = d;
+
   var color = d3.scaleSequential(d3.interpolateRainbow).domain([0, data.length]);
 
   var arc = g.selectAll(".arc")
@@ -34,6 +38,7 @@ var populateChart = function(data) {
     .attr("id", function(d) { return "text-" + d.data.answer.replace(" ", "-").toLowerCase(); });
 
   var guess = document.getElementById("guess");
+  var score = document.getElementById("score");
   var table = document.getElementById("answer_table");
 
   guess.addEventListener("input", function() {
@@ -57,6 +62,9 @@ var populateChart = function(data) {
 
         // handle dataset to prevent repeats with the similar names
         data[d].answer = "";
+
+        // update score
+        score.innerHTML = parseInt(score.innerHTML) + 1;
       }
     }
   });
@@ -69,6 +77,45 @@ var checkAnswer = function(guess, answer) {
   return false;
 }
 
+var revealAll = function() {
+  for (var d in data) {
+    if (data[d].answer && data[d].answer != "") {
+
+      console.log(data[d].answer);
+
+      // handle pie chart
+      var pie_text = d3.select("#text-" + data[d].answer.replace(" ", "-").toLowerCase());
+      pie_text.style('fill', 'red').style('font-weight', 'bold').text(data[d].answer);
+
+      // handle table
+      var rank = parseInt(d) + 1;
+      var tr = document.getElementById("tr_rank_" + rank);
+      var answer_td = tr.getElementsByClassName("right")[0];
+      var value_td = tr.getElementsByClassName("value")[0];
+      answer_td.innerHTML = data[d].answer;
+      answer_td.setAttribute("class", "text-danger");
+      value_td.innerHTML = data[d].value;
+      value_td.setAttribute("class", "text-danger");
+    }
+  }
+}
+
 var capitalize = function(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+var time = document.getElementById("time");
+var guess = document.getElementById("guess");
+var countdown = setInterval(function() {
+  if (parseInt(time.innerHTML) > 0) {
+    time.innerHTML = parseInt(time.innerHTML) - 1;
+  } else {
+    stopGame();
+  }
+}, 1000);
+
+var stopGame = function() {
+  guess.disabled = true;
+  revealAll();
+  clearInterval(countdown);
 }
