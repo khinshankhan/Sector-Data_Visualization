@@ -30,7 +30,9 @@ var populateChart = function(d) {
 
   arc.append("path")
     .attr("d", path)
-    .attr("fill", function(d) { return color(d.index); });
+    .attr("id", function(d) { return "arc-" + d.data.answer.replace(" ", "-").toLowerCase(); })
+    .attr("fill", "#707070")
+    .attr("color", function(d) { return color(d.index); });
 
   arc.append("text")
     .attr("transform", function(d) { return "translate(" + label.centroid(d) + ")"; })
@@ -45,9 +47,16 @@ var populateChart = function(d) {
     for (var d in data) {
       if (checkAnswer(guess.value, data[d].answer) && guess.value != "") {
 
+        // create transition
+        var t = d3.transition()
+            .duration(750)
+            .ease(d3.easeLinear);
+
         // handle pie chart
         var pie_text = d3.select("#text-" + data[d].answer.replace(" ", "-").toLowerCase());
         pie_text.text(data[d].answer);
+        var pie_slice = d3.select("#arc-" + data[d].answer.replace(" ", "-").toLowerCase());
+        pie_slice.transition(t).style("fill", pie_slice.attr("color"));
 
         // handle table
         var rank = parseInt(d) + 1;
@@ -64,7 +73,7 @@ var populateChart = function(d) {
         data[d].answer = "";
 
         // update score
-        score.innerHTML = parseInt(score.innerHTML) + 1;
+        score.innerHTML = parseInt(score.innerHTML) + parseInt(document.getElementById("time").innerHTML) + 1;
       }
     }
   });
@@ -93,9 +102,9 @@ var revealAll = function() {
       var answer_td = tr.getElementsByClassName("right")[0];
       var value_td = tr.getElementsByClassName("value")[0];
       answer_td.innerHTML = data[d].answer;
-      answer_td.setAttribute("class", "text-danger");
+      answer_td.setAttribute("class", "text-danger right");
       value_td.innerHTML = data[d].value;
-      value_td.setAttribute("class", "text-danger");
+      value_td.setAttribute("class", "text-danger value");
     }
   }
 }
