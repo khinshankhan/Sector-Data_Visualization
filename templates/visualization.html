@@ -15,7 +15,7 @@ Sector
 
 {% block content %}
 <div class="row">
-  <div class="col-sm">
+  <div class="col-sm" style="padding-right: 100px;">
     <br>
     <h3>Time Remaining: <span id="time">{{ time }}</span></h3>
     <h3>Your Score: <span id="score">0</span></h3>
@@ -36,9 +36,15 @@ Sector
     </table>
   </div>
   <div class="col-sm">
-    <br>
-    <center><h3>{{ chart_name }}</h3></center>
-    <svg width="500" height="500"></svg>
+    <br />
+    <center><h3>{{ chart_name }}</h3>
+      <svg width="450" height="450"></svg>
+      <div class="radio">
+        <label><input type="radio" name="chart_type" checked>Pie Chart</label>
+        <label><input type="radio" name="chart_type" disabled>Bar Graph</label>
+        <label><input type="radio" name="chart_type" disabled>Heat Map</label>
+      </div>
+    </center>
   </div>
 </div>
 
