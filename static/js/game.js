@@ -23,10 +23,23 @@ var populateChart = function(d) {
 
   var color = d3.scaleSequential(d3.interpolateRainbow).domain([0, data.length]);
 
+  var tip = d3.tip()
+      .attr('class', 'd3-tip')
+      .offset(function() {
+        return [this.getBBox().height/2, 0];
+      })
+      .html(function(d) {
+        return "<strong></strong> <span style='color:red'>" + d3.format(",.1%")(d.value / total(data)) + "</span>";
+      });
+
+  svg.call(tip);
+
   var arc = g.selectAll(".arc")
       .data(pie(data))
       .enter().append("g")
-      .attr("class", "arc");
+      .attr("class", "arc")
+      .on('mouseover', tip.show)
+      .on('mouseout', tip.hide);
 
   arc.append("path")
     .attr("d", path)
@@ -64,7 +77,7 @@ var populateChart = function(d) {
         var answer_td = tr.getElementsByClassName("right")[0];
         var value_td = tr.getElementsByClassName("value")[0];
         answer_td.innerHTML = data[d].answer;
-        value_td.innerHTML = data[d].value;
+        value_td.innerHTML = numberFormat(data[d].value);
 
         // handle input box
         guess.value = "";
@@ -127,4 +140,20 @@ var stopGame = function() {
   guess.disabled = true;
   revealAll();
   clearInterval(countdown);
+}
+
+var numberFormat = function (s) {
+  return d3.format(",")(s);
+}
+
+var total = function(data) {
+  var s = 0;
+
+  for (var d in data) {
+    if (data[d].value) {
+      s += parseInt(data[d].value);
+    }
+  }
+
+  return s;
 }
