@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block links_or_scripts %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/search.css') }}"/>
+{% endblock %}
+
+{% block c_title %}
+Search Results
+{% endblock %}
+
+{% block content %}
+<h3>Search results for "{{s_text}}"</h3>
+<hr>
+<table>
+  {% for i in results %}
+  <tr id="result">
+    <form method="POST" action="/visualization">
+      <td class="name">
+	<p>{{i}}</p>
+	<input type="hidden" name="user" value={{i}}>
+      </td>
+      <td class="go">
+	<button class="button" id="link" type="submit"> View </button>
+      </td>
+    </form>      
+  </tr>
+  {% endfor %}
+</table>
+
+{% endblock %}

@@ -25,6 +25,7 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base.css') }}"/>
+    
     {% block links_or_scripts %}
     {% endblock %}
   </head>
@@ -51,12 +52,10 @@
 
 	<!-- Commented for demo purposes. Also unsure if we want the snippets idea -->
 	<!-- button help https://getbootstrap.com/docs/4.0/components/buttons/ -->
-	<!--
-            <form class="form-inline my-2 my-lg-0">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
-            </form>
-	    -->
+        <form class="form-inline my-2 my-lg-0" method="POST" action="/searchjs">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="searchtext">
+          <button class="btn btn-outline-info my-2 my-sm-0" id="search_button" type="submit">Search</button>
+        </form>
       </div>
     </nav>
 
@@ -74,7 +73,6 @@
 
     <!-- Footer - Consistent across all pages-->
     <footer class="fixed-bottom">
-      <hr>
       <p class="footer_text">
         Σector &copy;
 	<span id="copyright">

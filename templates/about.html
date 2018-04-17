@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block links_or_scripts %}
+<!--<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/about.css') }}"/> -->
+<script src={{ url_for('static', filename='js/searching.js') }}></script>
+{% endblock %}
+
+{% block c_title %}
+About
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<p>Hello World!</p>
+<p>asdf</p>
+<p>oof</p>
+
+<h1 id="oh">final frontier<h1>
+{% endblock %}
