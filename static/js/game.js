@@ -18,6 +18,7 @@ var label = d3.arc()
     .outerRadius(radius - 40)
     .innerRadius(radius - 40);
 
+//=============Pie Chart=============
 var populateChart = function(d) {
   data = d;
 
@@ -157,3 +158,20 @@ var total = function(data) {
 
   return s;
 }
+
+//=============Heat Map=============
+// var format = function(d) {
+//   d = d / 1000000;
+//   return d3.format(',.02f')(d) + 'M';
+// }
+
+// var map = d3.geomap.choropleth()
+//   .geofile('./../data/topojson/world/countries.json')
+//   .colors(colorbrewer.YlOrBr[9])//9 bin multi hue color scheme
+//   .column('value')//Country Populations
+//   .legend(true)
+//   .unitId('Country Code');
+
+// d3.csv('./../data/WorldPopulation.csv', function(error, data) {
+//   d3.select('#map').datum(data).call(map.draw, map);
+// });

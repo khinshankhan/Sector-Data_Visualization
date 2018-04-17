@@ -1,231 +1,204 @@
-answer,value
-China,1415045928
-India,1354051854
-United States,326766748
-Indonesia,266794980
-Brazil,210867954
-Pakistan,200813818
-Nigeria,195875237
-Bangladesh,166368149
-Russia,143964709
-Mexico,130759074
-Japan,127185332
-Ethiopia,107534882
-Philippines,106512074
-Egypt,99375741
-Vietnam,96491146
-DR Congo,84004989
-Germany,82293457
-Iran,82011735
-Turkey,81916871
-Thailand,69183173
-United Kingdom,66573504
-France,65233271
-Italy,59290969
-Tanzania,59091392
-South Africa,57398421
-Myanmar,53855735
-South Korea,51164435
-Kenya,50950879
-Colombia,49464683
-Spain,46397452
-Argentina,44688864
-Uganda,44270563
-Ukraine,44009214
-Algeria,42008054
-Sudan,41511526
-Iraq,39339753
-Poland,38104832
-Canada,36953765
-Afghanistan,36373176
-Morocco,36191805
-Saudi Arabia,33554343
-Peru,32551815
-Venezuela,32381221
-Uzbekistan,32364996
-Malaysia,32042458
-Angola,30774205
-Mozambique,30528673
-Nepal,29624035
-Ghana,29463643
-Yemen,28915284
-Madagascar,26262810
-North Korea,25610672
-Ivory Coast,24905843
-Australia,24772247
-Cameroon,24678234
-Taiwan,23694089
-Niger,22311375
-Sri Lanka,20950041
-Burkina Faso,19751651
-Romania,19580634
-Malawi,19164728
-Mali,19107706
-Kazakhstan,18403860
-Syria,18284407
-Chile,18197209
-Zambia,17609178
-Guatemala,17245346
-Netherlands,17084459
-Zimbabwe,16913261
-Ecuador,16863425
-Senegal,16294270
-Cambodia,16245729
-Chad,15353184
-Somalia,15181925
-Guinea,13052608
-South Sudan,12919053
-Rwanda,12501156
-Tunisia,11659174
-Belgium,11498519
-Cuba,11489082
-Benin,11485674
-Burundi,11216450
-Bolivia,11215674
-Greece,11142161
-Haiti,11112945
-Dominican Republic,10882996
-Czech Republic,10625250
-Portugal,10291196
-Sweden,9982709
-Azerbaijan,9923914
-Jordan,9903802
-Hungary,9688847
-United Arab Emirates,9541615
-Belarus,9452113
-Honduras,9417167
-Tajikistan,9107211
-Serbia,8762027
-Austria,8751820
-Switzerland,8544034
-Israel,8452841
-Papua New Guinea,8418346
-Togo,7990926
-Sierra Leone,7719729
-Hong Kong,7428887
-Bulgaria,7036848
-Laos,6961210
-Paraguay,6896908
-Libya,6470956
-El Salvador,6411558
-Nicaragua,6284757
-Kyrgyzstan,6132932
-Lebanon,6093509
-Turkmenistan,5851466
-Singapore,5791901
-Denmark,5754356
-Finland,5542517
-Slovakia,5449816
-Republic of the Congo,5399895
-Norway,5353363
-Eritrea,5187948
-Palestine,5052776
-Costa Rica,4953199
-Liberia,4853516
-Oman,4829946
-Ireland,4803748
-New Zealand,4749598
-Central African Republic,4737423
-Mauritania,4540068
-Kuwait,4197128
-Croatia,4164783
-Panama,4162618
-Moldova,4041065
-Georgia,3907131
-Puerto Rico,3659007
-Bosnia and Herzegovina,3503554
-Uruguay,3469551
-Mongolia,3121772
-Albania,2934363
-Armenia,2934152
-Jamaica,2898677
-Lithuania,2876475
-Qatar,2694849
-Namibia,2587801
-Botswana,2333201
-Lesotho,2263010
-Gambia,2163765
-Macedonia,2085051
-Slovenia,2081260
-Gabon,2067561
-Latvia,1929938
-Guinea-Bissau,1907268
-Bahrain,1566993
-Swaziland,1391385
-Trinidad and Tobago,1372598
-Timor-Leste,1324094
-Equatorial Guinea,1313894
-Estonia,1306788
-Mauritius,1268315
-Cyprus,1189085
-Djibouti,971408
-Fiji,912241
-Reunion,883247
-Comoros,832347
-Bhutan,817054
-Guyana,782225
-Macau,632418
-Montenegro,629219
-Solomon Islands,623281
-Luxembourg,590321
-Suriname,568301
-Western Sahara,567421
-Cape Verde,553335
-Guadeloupe,449173
-Maldives,444259
-Brunei,434076
-Malta,432089
-Bahamas,399285
-Martinique,385065
-Belize,382444
-Iceland,337780
-French Guiana,289763
-Barbados,286388
-French Polynesia,285859
-Vanuatu,282117
-New Caledonia,279821
-Mayotte,259682
-Sao Tome and Principe,208818
-Samoa,197695
-Saint Lucia,179667
-Guam,165718
-Curacao,161577
-Kiribati,118414
-Saint Vincent and the Grenadines,110200
-Tonga,109008
-Grenada,108339
-Micronesia,106227
-Aruba,105670
-United States Virgin Islands,104914
-Antigua and Barbuda,103050
-Seychelles,95235
-Isle of Man,84831
-Andorra,76953
-Dominica,74308
-Cayman Islands,62348
-Bermuda,61070
-Greenland,56565
-Saint Kitts and Nevis,55850
-American Samoa,55679
-Northern Mariana Islands,55194
-Marshall Islands,53167
-Faroe Islands,49489
-Sint Maarten,40552
-Monaco,38897
-Liechtenstein,38155
-Turks and Caicos Islands,35963
-Gibraltar,34733
-San Marino,33557
-British Virgin Islands,31719
-Palau,21964
-Cook Islands,17411
-Anguilla,15045
-Wallis and Futuna,11683
-Nauru,11312
-Tuvalu,11287
-Saint Pierre and Miquelon,6342
-Montserrat,5203
-Falkland Islands,2922
-Niue,1624
-Tokelau,1319
-Vatican City,801
+answer,value,Country Code
+China,1378665000,CHN
+India,1324171354,IND
+United States,323127513,USA
+Indonesia,261115456,IDN
+Brazil,207652865,BRA
+Pakistan,193203476,PAK
+Nigeria,185989640,NGA
+Bangladesh,162951560,BGD
+Russia,144342396,RUS
+Mexico,127540423,MEX
+Japan,126994511,JPN
+Philippines,103320222,PHL
+Ethiopia,102403196,ETH
+Egypt,95688681,EGY
+Vietnam,92701100,VNM
+Germany,82667685,DEU
+Iran,80277428,IRN
+Turkey,79512426,TUR
+Democratic Republic of Congo,78736153,COD
+Thailand,68863514,THA
+France,66896109,FRA
+United Kingdom,65637239,GBR
+Italy,60600590,ITA
+South Africa,55908865,ZAF
+Tanzania,55572201,TZA
+Myanmar,52885223,MMR
+South Korea,51245707,KOR
+Colombia,48653419,COL
+Kenya,48461567,KEN
+Spain,46443959,ESP
+Ukraine,45004645,UKR
+Argentina,43847430,ARG
+Uganda,41487965,UGA
+Algeria,40606052,DZA
+Sudan,39578828,SDN
+Poland,37948016,POL
+Iraq,37202572,IRQ
+Canada,36286425,CAN
+Morocco,35276786,MAR
+Afghanistan,34656032,AFG
+Saudi Arabia,32275687,SAU
+Uzbekistan,31848200,UZB
+Peru,31773839,PER
+Venezuela,31568179,VEN
+Malaysia,31187265,MYS
+Nepal,28982771,NPL
+Mozambique,28829476,MOZ
+Angola,28813463,AGO
+Ghana,28206728,GHA
+Yemen,27584213,YEM
+North Korea,25368620,PRK
+Madagascar,24894551,MDG
+Australia,24127159,AUS
+Cote d'Ivoire,23695919,CIV
+Cameroon,23439189,CMR
+Sri Lanka,21203000,LKA
+Niger,20672987,NER
+Romania,19705301,ROU
+Burkina Faso,18646433,BFA
+Syrian Arab Republic,18430453,SYR
+Malawi,18091575,MWI
+Mali,17994837,MLI
+Chile,17909754,CHL
+Kazakhstan,17797032,KAZ
+Netherlands,17018408,NLD
+Zambia,16591390,ZMB
+Guatemala,16582469,GTM
+Ecuador,16385068,ECU
+Zimbabwe,16150362,ZWE
+Cambodia,15762370,KHM
+Senegal,15411614,SEN
+Chad,14452543,TCD
+Somalia,14317996,SOM
+Guinea,12395924,GIN
+South Sudan,12230730,SSD
+Rwanda,11917508,RWA
+Cuba,11475982,CUB
+Tunisia,11403248,TUN
+Belgium,11348159,BEL
+Bolivia,10887882,BOL
+Benin,10872298,BEN
+Haiti,10847334,HTI
+Greece,10746740,GRC
+Dominican Republic,10648791,DOM
+Czech Republic,10561633,CZE
+Burundi,10524117,BDI
+Portugal,10324611,PRT
+Sweden,9903122,SWE
+Hungary,9817958,HUN
+Azerbaijan,9762274,AZE
+Belarus,9507120,BLR
+Jordan,9455802,JOR
+United Arab Emirates,9269612,ARE
+Honduras,9112867,HND
+Austria,8747358,AUT
+Tajikistan,8734951,TJK
+Israel,8547100,ISR
+Switzerland,8372098,CHE
+Papua New Guinea,8084991,PNG
+Togo,7606374,TGO
+Sierra Leone,7396190,SLE
+Bulgaria,7127822,BGR
+Serbia,7057412,SRB
+Laos,6758353,LAO
+Paraguay,6725308,PRY
+El Salvador,6344722,SLV
+Libya,6293253,LBY
+Nicaragua,6149928,NIC
+Kyrgyz Republic,6082700,KGZ
+Lebanon,6006668,LBN
+Denmark,5731118,DNK
+Turkmenistan,5662544,TKM
+Singapore,5607283,SGP
+Finland,5495096,FIN
+Slovak Republic,5428704,SVK
+Norway,5232929,NOR
+Congo,5125821,COG
+Costa Rica,4857274,CRI
+Ireland,4773095,IRL
+New Zealand,4692700,NZL
+Liberia,4613823,LBR
+Central African Republic,4594621,CAF
+Eritrea,4474690,ERI
+Oman,4424762,OMN
+Mauritania,4301018,MRT
+Croatia,4170600,HRV
+Kuwait,4052584,KWT
+Panama,4034119,PAN
+Georgia,3719300,GEO
+Moldova,3552000,MDA
+Bosnia and Herzegovina,3516816,BIH
+Uruguay,3444006,URY
+Puerto Rico,3411307,PRI
+Mongolia,3027398,MNG
+Armenia,2924816,ARM
+Jamaica,2881355,JAM
+Albania,2876101,ALB
+Lithuania,2872298,LTU
+Qatar,2569804,QAT
+Namibia,2479713,NAM
+Botswana,2250260,BWA
+Lesotho,2203821,LSO
+Macedonia,2081206,MKD
+Slovenia,2064845,SVN
+Gambia,2038501,GMB
+Gabon,1979786,GAB
+Latvia,1960424,LVA
+Kosovo,1816200,XKX
+Guinea-Bissau,1815698,GNB
+Bahrain,1425171,BHR
+Trinidad and Tobago,1364962,TTO
+Swaziland,1343098,SWZ
+Estonia,1316481,EST
+Timor-Leste,1268671,TLS
+Mauritius,1263473,MUS
+Equatorial Guinea,1221490,GNQ
+Cyprus,1170125,CYP
+Djibouti,942333,DJI
+Fiji,898760,FJI
+Bhutan,797765,BTN
+Comoros,795601,COM
+Guyana,773303,GUY
+Montenegro,622781,MNE
+Solomon Islands,599419,SLB
+Luxembourg,582972,LUX
+Suriname,558368,SUR
+Cabo Verde,539560,CPV
+Malta,436947,MLT
+Brunei Darussalam,423196,BRN
+Maldives,417492,MDV
+Bahamas,391232,BHS
+Belize,366954,BLZ
+Iceland,334252,ISL
+Barbados,284996,BRB
+New Caledonia,278000,NCL
+Vanuatu,270402,VUT
+Sao Tome and Principe,199910,STP
+Samoa,195125,WSM
+St. Lucia,178015,LCA
+Guam,162896,GUM
+Curacao,159999,CUW
+Kiribati,114395,KIR
+St. Vincent and the Grenadines,109643,VCT
+Grenada,107317,GRD
+Tonga,107122,TON
+Federated States of Micronesia,104937,FSM
+Aruba,104822,ABW
+Seychelles,94677,SYC
+Andorra,77281,AND
+Dominica,73543,DMA
+Bermuda,65331,BMU
+Greenland,56186,GRL
+St. Kitts and Nevis,54821,KNA
+Marshall Islands,53066,MHL
+Faroe Islands,49117,FRO
+Monaco,38499,MCO
+Liechtenstein,37666,LIE
+Gibraltar,34408,GIB
+San Marino,33203,SMR
+Palau,21503,PLW
+Nauru,13049,NRU
+Tuvalu,11097,TUV
+Total,7404595888,
