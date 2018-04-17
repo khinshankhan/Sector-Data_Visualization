@@ -1,4 +1,5 @@
-var s = document.getElementsByTagName('p');
+var test = function(){
+var s = document.getElementsByTagName('p'); //document.documentElement.outerHTML
 var term = "oof";
 
 for (i = 0; i < s.length; i++) {
@@ -9,5 +10,5 @@ for (i = 0; i < s.length; i++) {
     console.log(res);
     document.getElementById("oh") = res;
 }
-
+};
 
