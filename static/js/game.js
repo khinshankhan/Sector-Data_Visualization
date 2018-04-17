@@ -117,7 +117,7 @@ var revealAll = function() {
       var value_td = tr.getElementsByClassName("value")[0];
       answer_td.innerHTML = data[d].answer;
       answer_td.setAttribute("class", "text-danger right");
-      value_td.innerHTML = data[d].value;
+      value_td.innerHTML = numberFormat(data[d].value);
       value_td.setAttribute("class", "text-danger value");
     }
   }
