@@ -24,23 +24,24 @@ var populateChart = function(d) {
 
   var color = d3.scaleSequential(d3.interpolateRainbow).domain([0, data.length]);
 
-  var tip = d3.tip()
-      .attr('class', 'd3-tip')
-      .offset(function() {
-        return [this.getBBox().height/2, 0];
-      })
-      .html(function(d) {
-        return "<strong></strong> <span style='color:red'>" + d3.format(",.1%")(d.value / total(data)) + "</span>";
-      });
-
-  svg.call(tip);
-
+  var info = document.getElementById("infoText");
   var arc = g.selectAll(".arc")
       .data(pie(data))
       .enter().append("g")
       .attr("class", "arc")
-      .on('mouseover', tip.show)
-      .on('mouseout', tip.hide);
+      .on('mouseover', function(d) {
+        if (data[d.index].answer == "") {
+          var rank = d.index + 1;
+          var tr = document.getElementById("tr_rank_" + rank);
+          var answer_td = tr.getElementsByClassName("right")[0];
+          info.innerHTML = answer_td.innerHTML + " " + d3.format(",.1%")(d.value / total(data));
+        } else {
+          info.innerHTML = d3.format(",.1%")(d.value / total(data));
+        }
+      })
+      .on('mouseout', function() {
+        info.innerHTML = "Hover over a slice to learn more!";
+      });
 
   arc.append("path")
     .attr("d", path)
@@ -61,24 +62,7 @@ var populateChart = function(d) {
     for (var d in data) {
       if (checkAnswer(guess.value, data[d].answer) && guess.value != "") {
 
-        // create transition
-        var t = d3.transition()
-            .duration(750)
-            .ease(d3.easeLinear);
-
-        // handle pie chart
-        var pie_text = d3.select("#text-" + data[d].answer.replace(" ", "-").toLowerCase());
-        pie_text.text(data[d].answer);
-        var pie_slice = d3.select("#arc-" + data[d].answer.replace(" ", "-").toLowerCase());
-        pie_slice.transition(t).style("fill", pie_slice.attr("color"));
-
-        // handle table
-        var rank = parseInt(d) + 1;
-        var tr = document.getElementById("tr_rank_" + rank);
-        var answer_td = tr.getElementsByClassName("right")[0];
-        var value_td = tr.getElementsByClassName("value")[0];
-        answer_td.innerHTML = data[d].answer;
-        value_td.innerHTML = numberFormat(data[d].value);
+        reveal(d, false);
 
         // handle input box
         guess.value = "";
@@ -100,25 +84,41 @@ var checkAnswer = function(guess, answer) {
   return false;
 }
 
+var reveal = function(d, end) {
+  var pie_text = d3.select("#text-" + data[d].answer.replace(" ", "-").toLowerCase());
+
+  if (!end) {
+    // create transition
+    var t = d3.transition()
+        .duration(750)
+        .ease(d3.easeLinear);
+
+    // handle pie chart
+    pie_text.text(data[d].answer);
+    var pie_slice = d3.select("#arc-" + data[d].answer.replace(" ", "-").toLowerCase());
+    pie_slice.transition(t).style("fill", pie_slice.attr("color"));
+  } else {
+    pie_text.style('fill', 'red').style('font-weight', 'bold').text(data[d].answer);
+  }
+
+  // handle table
+  var rank = parseInt(d) + 1;
+  var tr = document.getElementById("tr_rank_" + rank);
+  var answer_td = tr.getElementsByClassName("right")[0];
+  var value_td = tr.getElementsByClassName("value")[0];
+  answer_td.innerHTML = data[d].answer;
+  value_td.innerHTML = numberFormat(data[d].value);
+
+  if (end) {
+    answer_td.setAttribute("class", "text-danger right");
+    value_td.setAttribute("class", "text-danger value");
+  }
+}
+
 var revealAll = function() {
   for (var d in data) {
     if (data[d].answer && data[d].answer != "") {
-
-      console.log(data[d].answer);
-
-      // handle pie chart
-      var pie_text = d3.select("#text-" + data[d].answer.replace(" ", "-").toLowerCase());
-      pie_text.style('fill', 'red').style('font-weight', 'bold').text(data[d].answer);
-
-      // handle table
-      var rank = parseInt(d) + 1;
-      var tr = document.getElementById("tr_rank_" + rank);
-      var answer_td = tr.getElementsByClassName("right")[0];
-      var value_td = tr.getElementsByClassName("value")[0];
-      answer_td.innerHTML = data[d].answer;
-      answer_td.setAttribute("class", "text-danger right");
-      value_td.innerHTML = numberFormat(data[d].value);
-      value_td.setAttribute("class", "text-danger value");
+      reveal(d, true);
     }
   }
 }

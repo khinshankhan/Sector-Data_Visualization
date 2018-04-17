@@ -3,7 +3,6 @@
 {% block links_or_scripts %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/visualization.css') }}"/>
 <script src="https://d3js.org/d3.v4.min.js"></script>
-<script src="{{ url_for('static', filename='js/d3-tip.js') }}"></script>
 <!--
 <link href="{{ url_for('static', filename='css/d3.geomap.css') }}" rel="stylesheet">
 <script src="{{ url_for('static', filename='js/d3.geomap.dependencies.min.js') }}"></script>
@@ -46,6 +45,9 @@ Sector
     <br />
     <center><h3>{{ chart_name }}</h3>
       <svg width="450" height="450"></svg>
+      <div id="infoText">
+        Hover over a slice to learn more!
+      </div>
       <div class="radio">
         <label><input type="radio" name="chart_type" checked>Pie Chart</label>
         <label><input type="radio" name="chart_type" disabled>Bar Graph</label>
