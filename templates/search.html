@@ -19,15 +19,27 @@ Search Results
   var n = link.indexOf("?st=") + 4;
   //console.log(n);
   var res = link.slice(n);
-  console.log(res);
+  //console.log(res);
 
-  d3.csv("../../static/data/{{ data_file | safe }}", function(d) {
+  var results = [];
+  
+  d3.csv("../../static/data/WorldPopulation.csv", function(d) {
+  var country = d["answer"];
+  var code = d["Country Code"];
+  
+  //check if contained
+  var resl = res.toLowerCase();
+  var countryl = country.toLowerCase();
+  var codel = country.toLowerCase();
+  
+  if(countryl.includes(resl) || codel.includes(resl)){
+  console.log(country);
+  console.log(code);
+  }
+  
   return d;
   }, function(error, data) {
   if (error) throw error;
-  data.splice({{ dataset_size | safe }}, data.length);
-  //data.includes(res);
-  console.log(data);
   });
 
 </script>
