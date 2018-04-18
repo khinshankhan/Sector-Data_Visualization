@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 
 {% block links_or_scripts %}
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/search.css') }}"/>
+<script src="https://d3js.org/d3.v4.min.js"></script>
 {% endblock %}
+
 
 {% block c_title %}
 Search Results
@@ -11,6 +12,26 @@ Search Results
 {% block content %}
 <h3>Search results for "{{s_text}}"</h3>
 <hr>
+
+<script>
+  var link = window.location.href;
+  //console.log(link);
+  var n = link.indexOf("?st=") + 4;
+  //console.log(n);
+  var res = link.slice(n);
+  console.log(res);
+
+  d3.csv("../../static/data/{{ data_file | safe }}", function(d) {
+  return d;
+  }, function(error, data) {
+  if (error) throw error;
+  data.splice({{ dataset_size | safe }}, data.length);
+  //data.includes(res);
+  console.log(data);
+  });
+
+</script>
+
 <table>
   {% for i in results %}
   <tr id="result">
