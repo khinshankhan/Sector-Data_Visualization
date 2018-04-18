@@ -2,12 +2,12 @@
 
 {% block links_or_scripts %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/visualization.css') }}"/>
-<script src="https://d3js.org/d3.v4.min.js"></script>
 
 <link href="{{ url_for('static', filename='css/d3.geomap.css') }}" rel="stylesheet">
-<!--<script src="{{ url_for('static', filename='js/d3.geomap.dependencies.min.js') }}"></script>-->
-<script src="{{ url_for('static', filename='js/d3.geomap.min.js') }}"></script>
 
+<script src="{{ url_for('static', filename='js/d3.geomap.dependencies.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/d3.geomap.min.js') }}"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
 {% endblock %}
 
 {% block c_title %}
@@ -68,6 +68,18 @@ Sector
     data.splice({{ dataset_size | safe }}, data.length);
     console.log(data);
     populateChart(data);
+  });
+
+  var map = d3.geomap.choropleth()
+    .geofile('../../static/data/topojson/world/countries.json')
+    .colors(colorbrewer.YlOrBr[9])//9 bin multi hue color scheme
+    .column('value')//Country Populations
+    .legend(true)
+    .unitId('Country Code');
+
+  d3.csv('../../static/data/{{ data_file | safe }}', function(error, data) {
+    data.pop()//remove the 'total' row from the csv
+    d3.select('#map').datum(data).call(map.draw, map);
   });
 </script>
 

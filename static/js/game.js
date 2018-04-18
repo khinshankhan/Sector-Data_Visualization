@@ -160,18 +160,10 @@ var total = function(data) {
 }
 
 //=============Heat Map=============
-// var format = function(d) {
-//   d = d / 1000000;
-//   return d3.format(',.02f')(d) + 'M';
+// var generateHeatMap = function() {
+//   var format = function(d) {
+//     d = d / 1000000;
+//     return d3.format(',.02f')(d) + 'M';
+//   }
+//   return map;
 // }
-
-// var map = d3.geomap.choropleth()
-//   .geofile('./../data/topojson/world/countries.json')
-//   .colors(colorbrewer.YlOrBr[9])//9 bin multi hue color scheme
-//   .column('value')//Country Populations
-//   .legend(true)
-//   .unitId('Country Code');
-
-// d3.csv('./../data/WorldPopulation.csv', function(error, data) {
-//   d3.select('#map').datum(data).call(map.draw, map);
-// });
