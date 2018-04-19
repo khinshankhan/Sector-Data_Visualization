@@ -1,9 +1,10 @@
 from __future__ import print_function
-from flask import Flask, render_template, request, flash, redirect, url_for
+from flask import Flask, render_template, request, flash, redirect, url_for, session
 import json
 import sys
 
 app = Flask(__name__)
+app.secret_key = 'random'
 
 #PRINTS STUFF!!!!
 def eprint(*args, **kwargs):
@@ -29,13 +30,44 @@ def visualization():
 
 @app.route('/searchjs', methods=['POST'])
 def searchjs():
-    st = request.form['searchtext']
-    return redirect(url_for('search', st=st))
+    #eprint("fiend")
+    
+    search = request.form['queryy']
+    #eprint(search)
+    #session['querry'] = search
+    #q = session['user']
+    #session.modified = True
+    eprint(q)
+    dat = request.form.getlist('data[]')
+    #session['data'] = dat
+    return redirect(url_for('search', st=search, da = dat))
 
-@app.route('/search', methods=['POST', 'GET'])
+@app.route('/search', methods=['POST','GET'])
 def search():
-    st = request.args.get('st')
+    st = "hi"
     result = ['hi', 'bye']
+    
+    if request.args.get('st') != None:
+        st = request.args.get('st')
+        eprint("DATA: " + str(st))
+        session['querry'] = str(st)
+        da = request.args.get('da'[0])
+        session['data'] = da
+
+    q = session['user']
+    eprint(q)
+    eprint("data1?")
+    if 'querry' in session:
+        eprint("DATA1")
+        st = session['querry']
+        session.pop('querry', None)
+        eprint("legggoooo1")
+    eprint("data2?")
+    if 'data' in session:
+        eprint("DATA2")
+        result = session['data']
+        session.pop('data', None)
+        eprint("legggoooo2")
     return render_template('search.html', s_text = st, results = result)
 
 if __name__ == "__main__":

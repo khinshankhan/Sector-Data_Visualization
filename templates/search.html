@@ -1,10 +1,5 @@
 {% extends 'base.html' %}
 
-{% block links_or_scripts %}
-<script src="https://d3js.org/d3.v4.min.js"></script>
-{% endblock %}
-
-
 {% block c_title %}
 Search Results
 {% endblock %}
@@ -12,37 +7,6 @@ Search Results
 {% block content %}
 <h3>Search results for "{{s_text}}"</h3>
 <hr>
-
-<script>
-  var link = window.location.href;
-  //console.log(link);
-  var n = link.indexOf("?st=") + 4;
-  //console.log(n);
-  var res = link.slice(n);
-  //console.log(res);
-
-  var results = [];
-  
-  d3.csv("../../static/data/WorldPopulation.csv", function(d) {
-  var country = d["answer"];
-  var code = d["Country Code"];
-  
-  //check if contained
-  var resl = res.toLowerCase();
-  var countryl = country.toLowerCase();
-  var codel = country.toLowerCase();
-  
-  if(countryl.includes(resl) || codel.includes(resl)){
-  console.log(country);
-  console.log(code);
-  }
-  
-  return d;
-  }, function(error, data) {
-  if (error) throw error;
-  });
-
-</script>
 
 <table>
   {% for i in results %}
