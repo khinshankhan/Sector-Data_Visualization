@@ -4,7 +4,7 @@ import json
 import sys
 
 app = Flask(__name__)
-app.secret_key = 'random'
+app.secret_key = 'keysmithsmakekeys'
 
 #PRINTS STUFF!!!!
 def eprint(*args, **kwargs):
@@ -40,6 +40,7 @@ def searchjs():
     eprint(q)
     dat = request.form.getlist('data[]')
     #session['data'] = dat
+    print session
     return redirect(url_for('search', st=search, da = dat))
 
 @app.route('/search', methods=['POST','GET'])
