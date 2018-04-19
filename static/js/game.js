@@ -3,7 +3,7 @@ var data;
 var chartRadios = document.getElementsByClassName("charts");
 var pieChart = document.getElementById("pie");
 var heatMap = document.getElementById("map");
-//var graph = document.getElementById("graph");
+var graph = document.getElementById("graph");
 
 var svg = d3.select("svg"),
     width = svg.attr("width"),
@@ -80,14 +80,14 @@ var populateChart = function(d) {
       }
     }
   });
-}
+};
 
 var checkAnswer = function(guess, answer) {
   if (guess && answer) {
     return guess == answer.toLowerCase() || guess == capitalize(answer);
   }
   return false;
-}
+};
 
 var reveal = function(d, end) {
   var pie_text = d3.select("#text-" + data[d].answer.replace(" ", "-").toLowerCase());
@@ -118,7 +118,7 @@ var reveal = function(d, end) {
     answer_td.setAttribute("class", "text-danger right");
     value_td.setAttribute("class", "text-danger value");
   }
-}
+};
 
 var revealAll = function() {
   for (var d in data) {
@@ -126,11 +126,11 @@ var revealAll = function() {
       reveal(d, true);
     }
   }
-}
+};
 
 var capitalize = function(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
-}
+};
 
 var time = document.getElementById("time");
 var guess = document.getElementById("guess");
@@ -146,11 +146,11 @@ var stopGame = function() {
   guess.disabled = true;
   revealAll();
   clearInterval(countdown);
-}
+};
 
 var numberFormat = function (s) {
   return d3.format(",")(s);
-}
+};
 
 var total = function(data) {
   var s = 0;
@@ -162,31 +162,70 @@ var total = function(data) {
   }
 
   return s;
-}
+};
 
 var changeChart = function(){
   if(this.getAttribute("selection") == "Pie Chart"){
     pieChart.style.display = "block";
     heatMap.style.display = "none";
-    //graph.style.display = "none";
+    graph.style.display = "none";
   }
   else if(this.getAttribute("selection") == "Heat Map"){
     pieChart.style.display = "none";
     heatMap.style.display = "block";
-    //graph.style.display = "none";
+    graph.style.display = "none";
   }
   else{
     pieChart.style.display = "none";
     heatMap.style.display = "none";
-    //graph.style.display = "block";
+    graph.style.display = "block";
   }
-}
+};
+
+
+// BAR GRAPH STUFF
+var bargraph = function(d) {
+  var x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
+      y = d3.scaleLinear().rangeRound([height, 0]);
+
+  x.domain([0, data.length]);
+  y.domain([0, d3.max(data)]);
+
+  g.append("g")
+    .attr("class", "axis axis--x")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x));
+
+  g.append("g")
+    .attr("class", "axis axis--y")
+    .call(d3.axisLeft(y).ticks(10, "%"))
+    .append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 6)
+    .attr("dy", "0.71em")
+    .attr("text-anchor", "end")
+    .text("Frequency");
+
+  g.selectAll(".bar")
+    .data(data)
+    .enter().append("rect")
+    .attr("class", "bar")
+    .attr("x", function(d) { return x(d.letter); })
+    .attr("y", function(d) { return y(d.frequency); })
+    .attr("width", x.bandwidth())
+    .attr("height", function(d) { return height - y(d.frequency); });
+
+
+  console.log(d);
+};
+
 
 var addRadioListeners = function(){
   for(var i = 0; i < chartRadios.length; i++){
     chartRadios[i].addEventListener("change", changeChart);
   }
-}
+};
 
 addRadioListeners();
 heatMap.style.display = "none";
+graph.style.display = "none";

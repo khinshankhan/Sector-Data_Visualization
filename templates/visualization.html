@@ -46,18 +46,19 @@ Sector
     <br />
     <center><h3>{{ chart_name }}</h3>
       <div id ="chart">
-      <div id="pie">
-      <svg width="450" height="450"></svg>
-      <div id="infoText">
-        Hover over a slice to learn more!
+        <div id="pie">
+          <svg width="450" height="450"></svg>
+          <div id="infoText">
+            Hover over a slice to learn more!
+          </div>
+        </div>
+        <div id="map"></div>
+        <div id="graph"></div>
       </div>
-      </div>
-      <div id="map"></div>
-    </div>
       <div class="radio">
         <label><input type="radio" selection="Pie Chart" class="charts" name="graphs" checked>Pie Chart</label>
         <label><input type="radio" selection="Heat Map" class = "charts" name="graphs">Heat Map</label>
-        <!--<label><input type="radio" class = "charts" name="graphs">Bar Graph</label>-->
+        <label><input type="radio" class = "charts" name="graphs">Bar Graph</label>
       </div>
     </center>
   </div>
@@ -79,21 +80,33 @@ Sector
   });
 
   var format = function(d) {
-  d = d / 1000000;
-  return d3.format(',.02f')(d) + 'M';
+    d = d / 1000000;
+    return d3.format(',.02f')(d) + 'M';
   }
 
   var map = d3.geomap.choropleth()
-    .geofile('../../static/data/topojson/world/countries.json')
-    .colors(colorbrewer.YlOrBr[9])//9 bin multi hue color scheme
-    .column('value')//Country Populations
-    .legend(true)
-    .format(format)
-    .unitId('Country Code');
+              .geofile('../../static/data/topojson/world/countries.json')
+              .colors(colorbrewer.YlOrBr[9])//9 bin multi hue color scheme
+              .column('value')//Country Populations
+              .legend(true)
+              .format(format)
+              .unitId('Country Code');
 
   d3.csv('../../static/data/{{ data_file | safe }}', function(error, data) {
     data.pop()//remove the 'total' row from the csv
     d3.select('#map').datum(data).call(map.draw, map);
+  });
+
+  // For bar graphs
+  d3.csv("../../static/data/{{ data_file | safe }}", function(d) {
+    return d;
+  }, function(error, data) {
+    if (error) throw error;
+
+    data.splice({{ dataset_size | safe }}, data.length);
+
+    console.log(data);
+    bargraph(data);
   });
 </script>
 
