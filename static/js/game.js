@@ -1,5 +1,10 @@
 var data;
 
+var chartRadios = document.getElementsByClassName("charts");
+var pieChart = document.getElementById("pie");
+var heatMap = document.getElementById("map");
+//var graph = document.getElementById("graph");
+
 var svg = d3.select("svg"),
     width = svg.attr("width"),
     height = svg.attr("height"),
@@ -159,11 +164,29 @@ var total = function(data) {
   return s;
 }
 
-//=============Heat Map=============
-// var generateHeatMap = function() {
-//   var format = function(d) {
-//     d = d / 1000000;
-//     return d3.format(',.02f')(d) + 'M';
-//   }
-//   return map;
-// }
+var changeChart = function(){
+  if(this.getAttribute("selection") == "Pie Chart"){
+    pieChart.style.display = "block";
+    heatMap.style.display = "none";
+    //graph.style.display = "none";
+  }
+  else if(this.getAttribute("selection") == "Heat Map"){
+    pieChart.style.display = "none";
+    heatMap.style.display = "block";
+    //graph.style.display = "none";
+  }
+  else{
+    pieChart.style.display = "none";
+    heatMap.style.display = "none";
+    //graph.style.display = "block";
+  }
+}
+
+var addRadioListeners = function(){
+  for(var i = 0; i < chartRadios.length; i++){
+    chartRadios[i].addEventListener("change", changeChart);
+  }
+}
+
+addRadioListeners();
+heatMap.style.display = "none";

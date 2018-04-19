@@ -3,6 +3,8 @@
 {% block links_or_scripts %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/visualization.css') }}"/>
 
+<link rel="shortcut icon" href="">
+
 <link href="{{ url_for('static', filename='css/d3.geomap.css') }}" rel="stylesheet">
 
 <script src="{{ url_for('static', filename='js/d3.geomap.dependencies.min.js') }}"></script>
@@ -43,19 +45,25 @@ Sector
   <div class="col-sm">
     <br />
     <center><h3>{{ chart_name }}</h3>
+      <div id ="chart">
+      <div id="pie">
       <svg width="450" height="450"></svg>
       <div id="infoText">
         Hover over a slice to learn more!
       </div>
+      </div>
+      <div id="map"></div>
+    </div>
       <div class="radio">
-        <label><input type="radio" name="chart_type" checked>Pie Chart</label>
-        <label><input type="radio" name="chart_type" disabled>Bar Graph</label>
-        <label><input type="radio" name="chart_type" disabled>Heat Map</label>
+        <label><input type="radio" selection="Pie Chart" class="charts" name="graphs" checked>Pie Chart</label>
+        <label><input type="radio" selection="Heat Map" class = "charts" name="graphs">Heat Map</label>
+        <!--<label><input type="radio" class = "charts" name="graphs">Bar Graph</label>-->
       </div>
     </center>
   </div>
 </div>
-<div id="map"></div>
+<br>
+<br>
 
 <script src="{{ url_for('static', filename='js/game.js') }}"></script>
 
@@ -70,11 +78,17 @@ Sector
     populateChart(data);
   });
 
+  var format = function(d) {
+  d = d / 1000000;
+  return d3.format(',.02f')(d) + 'M';
+  }
+
   var map = d3.geomap.choropleth()
     .geofile('../../static/data/topojson/world/countries.json')
     .colors(colorbrewer.YlOrBr[9])//9 bin multi hue color scheme
     .column('value')//Country Populations
     .legend(true)
+    .format(format)
     .unitId('Country Code');
 
   d3.csv('../../static/data/{{ data_file | safe }}', function(error, data) {
