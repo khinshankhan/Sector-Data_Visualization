@@ -46,6 +46,7 @@ def searchjs():
 def search():
     st = "hi"
     result = ['hi', 'bye']
+    print session
     
     if request.args.get('st') != None:
         st = request.args.get('st')
@@ -60,13 +61,13 @@ def search():
     if 'querry' in session:
         eprint("DATA1")
         st = session['querry']
-        session.pop('querry', None)
+        session.pop('querry')
         eprint("legggoooo1")
     eprint("data2?")
     if 'data' in session:
         eprint("DATA2")
         result = session['data']
-        session.pop('data', None)
+        session.pop('data')
         eprint("legggoooo2")
     return render_template('search.html', s_text = st, results = result)
 
