@@ -56,8 +56,8 @@
 
 	<!-- Commented for demo purposes. Also unsure if we want the snippets idea -->
 	<!-- button help https://getbootstrap.com/docs/4.0/components/buttons/ -->
-        <!--<form class="form-inline my-2 my-lg-0" method="POST" action="/searchjs">-->
-	<form class="form-inline my-2 my-lg-0">
+        <form class="form-inline my-2 my-lg-0" method="POST" action="/s">
+	<!--<form class="form-inline my-2 my-lg-0">-->
           <input class="form-control mr-sm-2" id="choice" type="search" placeholder="Search" aria-label="Search" name="searchtext">
           <button class="btn btn-outline-info my-2 my-sm-0" id="search_button" type="submit">Search</button>
         </form>
@@ -97,7 +97,7 @@
       //console.log(results);
       var alp = ["friendddsss", "hiiiiiiiiiiiiiii"];
       $.ajax({
-      url: "{{ url_for('searchjs') }}",
+      url: "{{ url_for('s') }}",
       data: {'queryy': document.getElementById("choice").value, 'data': alp},
       type: 'POST',
       success: function(response) {

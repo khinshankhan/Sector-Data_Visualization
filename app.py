@@ -27,7 +27,7 @@ def quiz():
 def visualization():
     return render_template('visualization.html', dataset_name="World Population", data_file='WorldPopulation.csv')
     
-
+'''
 @app.route('/searchjs', methods=['POST'])
 def searchjs():
     #eprint("fiend")
@@ -40,37 +40,27 @@ def searchjs():
     eprint(q)
     dat = request.form.getlist('data[]')
     #session['data'] = dat
-    print session
+    eprint (session)
     return redirect(url_for('search', st=search, da = dat))
+'''
 
 @app.route('/search', methods=['POST','GET'])
 def search():
     st = "hi"
     result = ['hi', 'bye']
-    print session
+    eprint (session)
+    st = session['q']
+    session.pop('q')
+    result = session['d']
+    session.pop('d')
     
-    if request.args.get('st') != None:
-        st = request.args.get('st')
-        eprint("DATA: " + str(st))
-        session['querry'] = str(st)
-        da = request.args.get('da'[0])
-        session['data'] = da
-
-    q = session['user']
-    eprint(q)
-    eprint("data1?")
-    if 'querry' in session:
-        eprint("DATA1")
-        st = session['querry']
-        session.pop('querry')
-        eprint("legggoooo1")
-    eprint("data2?")
-    if 'data' in session:
-        eprint("DATA2")
-        result = session['data']
-        session.pop('data')
-        eprint("legggoooo2")
     return render_template('search.html', s_text = st, results = result)
+
+@app.route('/s', methods=['POST','GET'])
+def s():
+    session["q"]= request.form['queryy']
+    session["d"] = request.form.getlist('data[]')
+    return "hi"
 
 if __name__ == "__main__":
     app.debug = True
