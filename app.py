@@ -19,14 +19,14 @@ def root():
 def about():
     return render_template('about.html')
 
+@app.route('/quiz')
+def quiz():
+    return render_template('quiz.html', dataset_name="the world's top 15 most populous countries", dataset_size=15, data_file='WorldPopulation.csv', chart_name="Percentage of Population of the 15 Most Populous Countries", time=60)
+
 @app.route('/visualization')
 def visualization():
-    '''
-    dataset_name: What the data being represented is. Must be able to fill this blank: "Can you guess ______?"
-    dataset_size: The number of answers in the dataset
-    data: A JSON object of the data
-    '''
-    return render_template('visualization.html', dataset_name="the world's top 15 most populous countries", dataset_size=15, data_file='WorldPopulation.csv', chart_name="Percentage of Population of the 15 Most Populous Countries", time=60)
+    return render_template('visualization.html', dataset_name="World Population", data_file='WorldPopulation.csv')
+    
 
 @app.route('/searchjs', methods=['POST'])
 def searchjs():

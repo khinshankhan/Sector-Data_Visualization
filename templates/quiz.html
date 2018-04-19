@@ -17,10 +17,31 @@ Sector
 {% endblock %}
 
 {% block header %}
-<h1><dummy id="dataset">{{dataset_name}}</dummy></h1>
+<h1> Can you guess <dummy id="dataset">{{dataset_name}}</dummy>? </h1>
 {% endblock %}
 
 {% block content %}
+<div class="row">
+  <div class="col-sm" style="padding-right: 100px;">
+    <br>
+    <h3>Time Remaining: <span id="time">{{ time }}</span></h3>
+    <h3>Your Score: <span id="score">0</span></h3>
+    <br>
+    <label for="guess">Your Guess: </label>
+    <input  id="guess" type="text" placeholder="Type your answer here">
+    <br /> <br />
+
+    <table id="answer_table">
+      <tr>
+        <th class="left"> Rank </th> <th class="right"> Datum </th> <th class="value"> Value </th>
+      </tr>
+      {% for i in range(dataset_size) %}
+      <tr id="tr_rank_{{ i+1 }}">
+        <td class="left"> {{i + 1}} </td> <td class="right"> </td> <td class="value"> </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
   <div class="col-sm">
     <br />
     <center><h3>{{ chart_name }}</h3>
@@ -33,6 +54,11 @@ Sector
         </div>
         <div id="map"></div>
         <div id="graph"></div>
+      </div>
+      <div class="radio">
+        <label><input type="radio" selection="Pie Chart" class="charts" name="graphs" checked>Pie Chart</label>
+        <label><input type="radio" selection="Heat Map" class = "charts" name="graphs">Heat Map</label>
+        <label><input type="radio" selection="Bar Graph" class = "charts" name="graphs">Bar Graph</label>
       </div>
     </center>
   </div>

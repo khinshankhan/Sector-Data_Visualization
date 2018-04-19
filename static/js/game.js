@@ -220,5 +220,5 @@ var addRadioListeners = function(){
 };
 
 addRadioListeners();
-setTimeout(function(){heatMap.style.display = "none";}, 50);//need this because there is no possible way to tell when the geomap has been rendered and it cant be hidden until it is rendered
-setTimeout(function(){graph.style.display = "none";}, 50);
+  setTimeout(function(){heatMap.style.display = "none";}, 50);//need this because there is no possible way to tell when the geomap has been rendered and it cant be hidden until it is rendered
+  setTimeout(function(){graph.style.display = "none";}, 50);
