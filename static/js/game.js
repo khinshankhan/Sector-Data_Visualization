@@ -11,6 +11,11 @@ var svg = d3.select("svg"),
     radius = Math.min(width, height) / 2,
     g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
+// var bar_svg = d3.select("#barg"),
+//     bar_width = bar_svg.attr("width"),
+//     bar_height = bar_svg.attr("height"),
+//     bar_g = bar_svg.append("g").attr("transform", "translate(" + bar_width / 2 + "," + bar_height / 2 + ")");
+
 var pie = d3.pie()
     .sort(null)
     .value(function(d) { return d.value; });
@@ -185,21 +190,21 @@ var changeChart = function(){
 
 // BAR GRAPH STUFF
 var bargraph = function(d) {
-  var x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
-      y = d3.scaleLinear().rangeRound([height, 0]);
+  var bar_x = d3.scaleBand().rangeRound([0, bar_width]).padding(0.1),
+      bar_y = d3.scaleLinear().rangeRound([bar_height, 0]);
 
-  x.domain([0, data.length]);
-  y.domain([0, d3.max(data)]);
+  bar_x.domain([0, data.length]);
+  bar_y.domain([0, d3.max(data)]);
 
-  g.append("g")
+  bar_g.append("g")
     .attr("class", "axis axis--x")
     .attr("transform", "translate(0," + height + ")")
     .call(d3.axisBottom(x));
 
-  g.append("g")
+  bar_g.append("g")
     .attr("class", "axis axis--y");
 
-  g.selectAll(".bar")
+  bar_g.selectAll(".bar")
     .data(data)
     .enter().append("rect")
     .attr("class", "bar")
@@ -221,4 +226,4 @@ var addRadioListeners = function(){
 
 addRadioListeners();
   setTimeout(function(){heatMap.style.display = "none";}, 50);//need this because there is no possible way to tell when the geomap has been rendered and it cant be hidden until it is rendered
-  setTimeout(function(){graph.style.display = "none";}, 50);
+setTimeout(function(){graph.style.display = "none";}, 50);
