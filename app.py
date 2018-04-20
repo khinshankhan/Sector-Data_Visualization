@@ -34,6 +34,21 @@ def search():
     
     return render_template('search.html', s_text = st, results = result)
 
+@app.route('/searchjs', methods=['POST','GET'])
+def searchjs():
+    asdf = request.form['q']
+    eprint(asdf)
+    '''
+    eprint("point 1")
+    asdf = request.args.get('d[][]')
+    eprint("point 2")
+    l = len(asdf)
+    eprint("point 3")
+    eprint(l)
+    eprint("point 4")
+    '''
+    return "Hi"
+
 @app.route('/s', methods=['POST','GET'])
 def s():
     #session["d"] = request.form.getlist('data[]')
