@@ -6,7 +6,7 @@ var sleep = function (ms) {
 };
 
 var data = function(res){
-    
+    var j = 0;
     d3.csv("../../static/data/WorldPopulation.csv", function(d) {
 	var country = d["answer"];
 	var code = d["Country Code"];
@@ -18,14 +18,21 @@ var data = function(res){
 	
 	if(countryl.includes(resl) || codel.includes(resl)){
 	    //var temp = [country, code, d["value"]];
-	    for (i in d){
-		var t = d[i];
-		resu.push(t);
-	    }
+	    /*
+	      for (i in d){
+	      var t = d[i];
+	      resu.push(t);
+	      }
+	    */
 	    //console.log(country);
 	    //console.log(code);
+	    resu.push(d);
 	}
-
+	if(j == 202){
+	    understand();
+	    console.log(j);
+	}
+	j+=1;
 	return d;
     }, function(error, data) {
 	if (error) throw error;
@@ -52,11 +59,13 @@ $(document).ready(function() {
 	//console.log(res);
 	data(res);
 	//sleep(2000);
-	if (pause == true){
-	    //console.log(pause);
-	    understand();
-	    pause = false;
-	}
+	/*
+	  if (pause == true){
+	  //console.log(pause);
+	  understand();
+	  pause = false;
+	  }
+	*/
     };
     
     document.getElementById("search_button").addEventListener("click", run);
