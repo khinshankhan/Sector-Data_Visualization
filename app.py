@@ -26,40 +26,17 @@ def quiz():
 @app.route('/visualization')
 def visualization():
     return render_template('visualization.html', dataset_name="World Population", data_file='WorldPopulation.csv')
-    
-'''
-@app.route('/searchjs', methods=['POST'])
-def searchjs():
-    #eprint("fiend")
-    
-    search = request.form['queryy']
-    #eprint(search)
-    #session['querry'] = search
-    #q = session['user']
-    #session.modified = True
-    eprint(q)
-    dat = request.form.getlist('data[]')
-    #session['data'] = dat
-    eprint (session)
-    return redirect(url_for('search', st=search, da = dat))
-'''
 
 @app.route('/search', methods=['POST','GET'])
 def search():
     st = "hi"
     result = ['hi', 'bye']
-    eprint (session)
-    st = session['q']
-    session.pop('q')
-    result = session['d']
-    session.pop('d')
     
     return render_template('search.html', s_text = st, results = result)
 
 @app.route('/s', methods=['POST','GET'])
 def s():
-    session["q"]= request.form['queryy']
-    session["d"] = request.form.getlist('data[]')
+    #session["d"] = request.form.getlist('data[]')
     return "hi"
 
 if __name__ == "__main__":
