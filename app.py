@@ -36,8 +36,13 @@ def search():
 
 @app.route('/searchjs', methods=['POST','GET'])
 def searchjs():
-    asdf = request.form['q']
-    eprint(asdf)
+    q = request.form['q']
+    eprint(q)
+    d = request.form['d']
+    for i in range(len(d)):
+        eprint(d[i])
+    #dd = json.loads(d.read())
+    #eprint(dd)
     '''
     eprint("point 1")
     asdf = request.args.get('d[][]')

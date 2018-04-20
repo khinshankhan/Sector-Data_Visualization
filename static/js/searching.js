@@ -16,39 +16,35 @@ var data = function(res, fin){
 	var codel = country.toLowerCase();
 	
 	if(countryl.includes(resl) || codel.includes(resl)){
-	    //var temp = [country, code, d["value"]];
+	    var temp = [country, code, d["value"]];
 	    //console.log(country);
 	    //console.log(code);
-	    resu.push(d);
+	    resu.push(temp);
 	}
 	if(j == 202){
 	    understand();
 	    console.log(j);
+	    fin(res);
 	}
 	j+=1;
 	return d;
     }, function(error, data) {
 	if (error) throw error;
     });
-
-    fin(res);
 };
 
 var understand = function(){
-    
-      console.log("Test start:");
-      console.log(resu);
-      console.log('res len: ' + resu.length);
-      console.log("end");
-    
-    //var ooh = document.getElementById("oh").innerHTML;
-    //document.getElementById("oh").innerHTML = "hi there";
+    console.log("Test start:");
+    console.log(resu);
+    console.log('res len: ' + resu.length);
+    console.log("end");
 };
 
 var send = function(res) {
+    var temp = JSON.stringify(resu);
     $.ajax({
 	url: '/searchjs',
-	data : { q : res, d : resu },
+	data : { q : res, d : temp },
 	type: 'POST',
 	success: function(d) {
 	    console.log(d);
