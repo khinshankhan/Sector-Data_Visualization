@@ -10,16 +10,10 @@ Search Results
 
 <table>
   {% for i in results %}
-  <tr id="result">
-    <form method="POST" action="/visualization">
-      <td class="name">
-	<p>{{i}}</p>
-	<input type="hidden" name="user" value={{i}}>
-      </td>
-      <td class="go">
-	<button class="button" id="link" type="submit"> View </button>
-      </td>
-    </form>      
+  <tr>
+    <td>{{i[0]}}</td>
+    <td>{{i[1]}}</td>
+    <td>{{i[2]}}</td>
   </tr>
   {% endfor %}
 </table>

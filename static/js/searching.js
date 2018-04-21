@@ -48,6 +48,7 @@ var send = function(res) {
 	type: 'POST',
 	success: function(d) {
 	    console.log(d);
+	    window.location.href = '/search/'+res; 
 	} //end success callback
     });//end ajax call
 };

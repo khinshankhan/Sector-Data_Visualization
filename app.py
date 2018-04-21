@@ -27,36 +27,38 @@ def quiz():
 def visualization():
     return render_template('visualization.html', dataset_name="World Population", data_file='WorldPopulation.csv')
 
-@app.route('/search', methods=['POST','GET'])
-def search():
-    st = "hi"
-    result = ['hi', 'bye']
-    
+query = "hi"
+array = ['hi', 'bye']
+@app.route('/search/<res>', methods=['POST','GET'])
+def search(res):
+    global query
+    st = query
+    global array
+    result = array
+    #eprint("Testing:")
+    #eprint(array)
     return render_template('search.html', s_text = st, results = result)
 
 @app.route('/searchjs', methods=['POST','GET'])
 def searchjs():
     q = request.form['q']
-    eprint(q)
+    #eprint(q)
     d = request.form['d']
-    for i in range(len(d)):
-        eprint(d[i])
-    #dd = json.loads(d.read())
+    dd = json.loads(d)
     #eprint(dd)
-    '''
-    eprint("point 1")
-    asdf = request.args.get('d[][]')
-    eprint("point 2")
-    l = len(asdf)
-    eprint("point 3")
-    eprint(l)
-    eprint("point 4")
-    '''
+    
+    #session["q"] = q
+    #session["d"] = dd[0]
+
+    global query
+    query = q
+
+    global array
+    array = dd
     return "Hi"
 
 @app.route('/s', methods=['POST','GET'])
 def s():
-    #session["d"] = request.form.getlist('data[]')
     return "hi"
 
 if __name__ == "__main__":
