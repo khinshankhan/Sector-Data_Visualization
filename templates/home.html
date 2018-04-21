@@ -16,7 +16,53 @@ Home
 {% block content %}
 <div class="container">
   <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at tristique nisi. Proin id porta massa. Morbi egestas vel lorem ut efficitur. Praesent finibus vel enim accumsan fermentum. Proin et eleifend diam. Maecenas id consequat purus, sodales lacinia magna. Cras vel est vitae mauris ullamcorper faucibus. Morbi a sem a augue blandit varius ut sed lacus. Integer aliquam eu enim a porta. Duis consectetur dui iaculis massa sagittis ornare. Pellentesque tincidunt odio et nisi vulputate, nec dignissim ex tempus.</p>      
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at tristique nisi. Proin id porta massa. Morbi egestas vel lorem ut efficitur. Praesent finibus vel enim accumsan fermentum. Proin et eleifend diam. Maecenas id consequat purus, sodales lacinia magna. Cras vel est vitae mauris ullamcorper faucibus. Morbi a sem a augue blandit varius ut sed lacus. Integer aliquam eu enim a porta. Duis consectetur dui iaculis massa sagittis ornare. Pellentesque tincidunt odio et nisi vulputate, nec dignissim ex tempus.</p>
+  <div class="row">
+    <div class="col-sm-5" style="background-color:#17A2B8;">
+      Choose Your Time (seconds)
+      <br>
+      <br>
+      <center>
+        <fieldset id="group1">
+          <div style="float:left;">
+            <input type="radio" name="gr1" id="g1" value="30"/>
+            <label for="g1">30</label>
+          </div>
+          <input type="radio" name="gr1" id="g2" value="60" checked/>
+          <label for="g2">60</label>
+          <div style="float:right;">
+            <input type="radio" name="gr1" id="g3" value="180"/>
+            <label for="g3">180</label>
+          </div>
+        </fieldset>
+      </center>
+      <br>
+    </div>
+
+    <div class="col-sm-2" style="background-color:white;">
+    </div>
+    <div class="col-sm-5" style="background-color:#17A2B8;">
+      Choose Your Dataset Magnitude (size)
+      <br>
+      <br>
+      <center>
+        <fieldset id="group2">
+          <div style="float:left;">
+            <input type="radio" name="gr2" id="g1" value="10"/>
+            <label for="g1">10</label>
+          </div>
+          <input type="radio" name="gr2" id="g2" value="15" checked/>
+          <label for="g2">15</label>
+          <div style="float:right;">
+            <input type="radio" name="gr2" id="g3" value="20"/>
+            <label for="g3">20</label>
+          </div>
+        </fieldset>
+      </center>
+      <br>
+    </div>
+  </div>
+  <br>
   <div class="row">
     <div class="col-sm-4" style="background-color:#FFD700;">
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>
@@ -24,7 +70,7 @@ Home
       <br>
       <br>
       <center>
-	<button type="button" class="btn btn-info" value="1">Countries</button>
+        <button type="button" class="btn btn-info" value="1">Countries</button>
       </center>
     </div>
     <div class="col-sm-4" style="background-color:#17A2B8;">
@@ -32,9 +78,8 @@ Home
       <br>
       <br>
       <br>
-      <br>
       <center>
-	<button type="button" class="btn btn-warning" value="2">Cars</button>
+        <button type="button" class="btn btn-warning" value="2">Cars</button>
       </center>
     </div>
     <div class="col-sm-4" style="background-color:#FFD700;">
@@ -43,7 +88,7 @@ Home
       <br>
       <br>
       <center>
-	<button type="button" class="btn btn-info" value="3">Songs</button>
+        <button type="button" class="btn btn-info" value="3">Songs</button>
       </center>
     </div>
   </div>

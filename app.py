@@ -23,26 +23,31 @@ dsn = ""
 dss = ""
 dsf = ""
 cn = ""
-@app.route('/quiz/<value>', methods=['POST','GET'])
-def quiz(value):
-    eprint(value)
+@app.route('/quiz/<val>', methods=['POST','GET'])
+def quiz(val):
+    ooh = val.split('_')
+    value = ooh[0]
+    time = ooh[1]
+    size = ooh[2]
     global dsn
     global dss
     global dsf
     global cn
     # when value is:
     #1 = countries, 2 = cars, 3 = songs
+    dss = int(size)
     if(value == '1'):
-        dsn = "the world's top 15 most populous countries"
+        dsn = "the world's top %d most populous countries"%(dss)
+        cn = "Percentage of Population of the %d Most Populous Countries"%(dss)
     elif(value == '2'):
-        dsn = "the Europe's top 15 most popular car models"
+        dsn = "the Europe's top %d most popular car models"%(dss)
+        cn = "Percentage of Popularity of Europe's %d most Popular Car Models"%(dss)
     elif(value == '3'):
-        dsn = "the world's top 15 most popular songs"
-    eprint(dsn)
-    dss = 15
+        dsn = "the world's top %d most popular songs"%(dss)
+        cn = "Percentage of Population of the %d Most Populous Countries"%(dss)
+
     dsf = 'WorldPopulation.csv'
-    cn = "Percentage of Population of the 15 Most Populous Countries"
-    return render_template('quiz.html', dataset_name=dsn, dataset_size=dss, data_file=dsf, chart_name=cn, time=60)
+    return render_template('quiz.html', dataset_name=dsn, dataset_size=dss, data_file=dsf, chart_name=cn, time=int(time))
 
 @app.route('/visualization')
 def visualization():
