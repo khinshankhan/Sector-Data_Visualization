@@ -9,13 +9,34 @@ Home
 {% endblock %}
 
 {% block content %}
-<div class="radio">
-  <label><input type="radio" name="optradio" value="the world's top 10 most populous countries" checked>Populated Countries</label>
+<div class="container">
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at tristique nisi. Proin id porta massa. Morbi egestas vel lorem ut efficitur. Praesent finibus vel enim accumsan fermentum. Proin et eleifend diam. Maecenas id consequat purus, sodales lacinia magna. Cras vel est vitae mauris ullamcorper faucibus. Morbi a sem a augue blandit varius ut sed lacus. Integer aliquam eu enim a porta. Duis consectetur dui iaculis massa sagittis ornare. Pellentesque tincidunt odio et nisi vulputate, nec dignissim ex tempus.</p>      
+  <div class="row">
+    <div class="col-sm-4" style="background-color:#FFD700;">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>
+      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      <br>
+      <center>
+	<button type="button" class="btn btn-info">Countries</button>
+      </center>
+    </div>
+    <div class="col-sm-4" style="background-color:#17A2B8;">
+      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto.
+      <br>
+      <br>
+      <center>
+	<button type="button" value='1' class="btn btn-warning">Cars</button>
+      </center>
+    </div>
+    <div class="col-sm-4" style="background-color:#FFD700;">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>
+      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      <br>
+      <center>
+	<button type="button" class="btn btn-info">Songs</button>
+      </center>
+    </div>
+  </div>
 </div>
-<div class="radio disabled">
-  <label><input type="radio" name="optradio" value="Europe's top 10 most popular car models" disabled>Popular Car Models in Europe</label>
-</div>
-<div class="radio disabled">
-  <label><input type="radio" name="optradio" value="the world's top 10 popular songs... in 2000" disabled>Popular Songs</label>
-</div> 
 {% endblock %}
