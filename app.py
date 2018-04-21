@@ -19,9 +19,30 @@ def root():
 def about():
     return render_template('about.html')
 
-@app.route('/quiz')
-def quiz():
-    return render_template('quiz.html', dataset_name="the world's top 15 most populous countries", dataset_size=15, data_file='WorldPopulation.csv', chart_name="Percentage of Population of the 15 Most Populous Countries", time=60)
+dsn = ""
+dss = ""
+dsf = ""
+cn = ""
+@app.route('/quiz/<value>', methods=['POST','GET'])
+def quiz(value):
+    eprint(value)
+    global dsn
+    global dss
+    global dsf
+    global cn
+    # when value is:
+    #1 = countries, 2 = cars, 3 = songs
+    if(value == '1'):
+        dsn = "the world's top 15 most populous countries"
+    elif(value == '2'):
+        dsn = "the Europe's top 15 most popular car models"
+    elif(value == '3'):
+        dsn = "the world's top 15 most popular songs"
+    eprint(dsn)
+    dss = 15
+    dsf = 'WorldPopulation.csv'
+    cn = "Percentage of Population of the 15 Most Populous Countries"
+    return render_template('quiz.html', dataset_name=dsn, dataset_size=dss, data_file=dsf, chart_name=cn, time=60)
 
 @app.route('/visualization')
 def visualization():

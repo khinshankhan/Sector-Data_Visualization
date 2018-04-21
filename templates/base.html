@@ -51,16 +51,14 @@
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('visualization') }}">Visualization</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('quiz') }}">Quiz</a>
-          </li>
         </ul>
 
 	<!-- Commented for demo purposes. Also unsure if we want the snippets idea -->
 	<!-- button help https://getbootstrap.com/docs/4.0/components/buttons/ -->
         <!--method="POST" action="/s">-->
-	<!--<form class="form-inline my-2 my-lg-0">-->
-        <input class="mr-sm-2" id="choice" type="search" placeholder="Search" aria-label="Search">
+	<form class="form-inline my-2 my-lg-0">
+	  <input class="form-control mr-sm-2"  id="choice" type="search" placeholder="Search" aria-label="Search">
+	</form>
         <button class="btn btn-outline-info" id="search_button">Search</button>
         
       </div>

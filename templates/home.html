@@ -1,11 +1,16 @@
 {% extends 'base.html' %}
 
+{% block links_or_scripts %}
+<script src={{ url_for('static', filename='js/toquiz.js') }}></script>
+{% endblock %}
+
+
 {% block c_title %}
 Home
 {% endblock %}
 
 {% block header %}
-<h1> Choose a Type of Data: </h1>
+<h1> Choose Your Data: </h1>
 {% endblock %}
 
 {% block content %}
@@ -17,24 +22,28 @@ Home
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>
       Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
       <br>
+      <br>
       <center>
-	<button type="button" class="btn btn-info">Countries</button>
+	<button type="button" class="btn btn-info" value="1">Countries</button>
       </center>
     </div>
     <div class="col-sm-4" style="background-color:#17A2B8;">
       Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto.
       <br>
       <br>
+      <br>
+      <br>
       <center>
-	<button type="button" value='1' class="btn btn-warning">Cars</button>
+	<button type="button" class="btn btn-warning" value="2">Cars</button>
       </center>
     </div>
     <div class="col-sm-4" style="background-color:#FFD700;">
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>
       Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
       <br>
+      <br>
       <center>
-	<button type="button" class="btn btn-info">Songs</button>
+	<button type="button" class="btn btn-info" value="3">Songs</button>
       </center>
     </div>
   </div>
