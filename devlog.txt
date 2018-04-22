@@ -1,12 +1,149 @@
-khanK -- 2018-03-28 23:10:23
-first of many uses of the shell script to log
+khanK -- Wed Mar 28 14:23:56 2018 -0400
+initial commit+first of many uses of the shell script to log
 
-khanK -- 2018-04-08 15:36:49
+khanK -- Wed Mar 28 22:54:50 2018 -0400
+converted pdf to readme manually. we have a design doc now
+
+khanK -- Sun Apr 8 15:07:45 2018 -0400
 Fixed up issues, added bootstrap, made a little skeleton/ base code
 
-khanK -- 2018-04-11 21:25:23
-Couldn't push in class due to merge conflict & time. The base now has a mvp navbar and footer in progress. Thinking about adding snippets that user can search for.
+khanK -- Sun Apr 8 15:15:39 2018 -0400
+Most minimal possible functioning flask side
 
--e khanK -- 2018-04-12 14:54:04
+zaiaJ -- Wed Apr 11 14:51:32 2018 -0400
+Added basic layout for visualization
+
+khanK -- Wed Apr 11 21:25:52 2018 -0400
+The base now has a mvp navbar and footer in progress. Thinking about adding snippets that user can search for.
+
+zaiaJ -- Thu Apr 12 14:52:21 2018 -0400
+Add a table and ui for visualization page
+
+khanK -- Thu Apr 12 14:54:30 2018 -0400
 fixed urls and started POST structure for visualization choice
+
+smithJ -- Thu Apr 12 15:19:16 2018 -0400
+prepared json dataset
+
+smithJ -- Thu Apr 12 20:38:39 2018 -0400
+even more data!
+
+siuR -- Thu Apr 12 20:45:46 2018 -0400
+Begin work on merging Ryan's and Jake's work, create pie chart and transition when correct answer is inputted
+
+siuR -- Thu Apr 12 21:07:40 2018 -0400
+Fully integrate data and pie chart with game
+
+siuR -- Thu Apr 12 21:16:26 2018 -0400
+Integrate table with correct answer animation
+
+siuR -- Thu Apr 12 21:26:36 2018 -0400
+Add rainbow colored pie chart
+ 
+siuR -- Thu Apr 12 21:28:11 2018 -0400
+Fix backspace clearing table bug
+
+siuR -- Thu Apr 12 21:36:41 2018 -0400
+Add lowercase/capitalization handling for guesses
+
+siuR -- Thu Apr 12 21:46:59 2018 -0400
+Restyle game page and add values to table, title to chart
+
+smithJ -- Fri Apr 13 07:57:51 2018 -0400
+Update home.html
+
+siuR -- Sun Apr 15 14:22:07 2018 -0400
+Add game functionality
+
+siuR -- Mon Apr 16 14:26:45 2018 -0400
+Add transitions to pie chart
+
+khanK -- Mon Apr 16 14:48:26 2018 -0400
+half the code for chart text
+
+zaiaJ -- Mon Apr 16 14:49:23 2018 -0400
+Minor touchups to visualization page
+
+siuR -- Mon Apr 16 15:08:02 2018 -0400
+Add tooltip to pie chart
+
+smithJ -- Mon Apr 16 23:23:34 2018 -0400
+made new datasets that are compliant with geomap and began working on it
+
+khanK -- Tue Apr 17 00:02:59 2018 -0400
+search isn't fully working.. might need ajax?
+
+smithJ -- Tue Apr 17 06:49:49 2018 -0400
+Update searching.js
+
+siuR -- Tue Apr 17 13:16:30 2018 -0400
+Fix number formatting for end of game
+
+siuR -- Tue Apr 17 14:50:28 2018 -0400
+Add hover box with more data
+
+khanK -- Wed Apr 18 09:04:34 2018 -0400
+almost done with search, need to ask ryan for some pointers on d3.csv(). need to make this async function compatabible with another + some sync stuff. thinking about defered/promises
+
+siuR -- Wed Apr 18 14:40:39 2018 -0400
+Comment out dependencies script
+
+khanK -- Wed Apr 18 14:49:58 2018 -0400
+hey, almost everything works in the js side for search. using 'functional programming' with callback and such instead of promises
+
+smithJ -- Wed Apr 18 18:29:07 2018 -0400
+finally debugged geomap
+
+smithJ -- Wed Apr 18 20:41:44 2018 -0400
+almost done with swapping
+
+zaiaJ -- Wed Apr 18 21:30:57 2018 -0400
+temp push, started bar graph code
+
+zaiaJ -- Wed Apr 18 22:07:25 2018 -0400
+More temp push, on the move.
+
+smithJ -- Wed Apr 18 23:11:24 2018 -0400
+got the swapping working because javascript and d3 are dumb, just had to make it so d3 is done after: thus geomap cant overwrite it
+
+khanK -- Thu Apr 19 02:39:09 2018 -0400
+almostttt, need to parse the data a bit better
+
+smithJ -- Thu Apr 19 07:33:45 2018 -0400
+we can print sessions for debug purposes
+
+smithJ -- Thu Apr 19 07:35:41 2018 -0400
+Update app.py
+
+smithJ -- Thu Apr 19 13:14:06 2018 -0400
+began making page for visualization and a separate page for the quiz
+
+khanK -- Thu Apr 19 14:22:12 2018 -0400
+*** slightly more stable version rn. commented out whatever doesnt work. cutting losses 
+
+khanK -- Thu Apr 19 23:39:21 2018 -0400
+im soooooo close, js is doing something weird with the array?
+
+khanK -- Fri Apr 20 09:26:35 2018 -0400
+Bois dw is a cs god. leggo, search works
+
+khanK -- Fri Apr 20 15:09:32 2018 -0400
+need to figure out ajax w/ 2d array. may need to write a custom parser
+
+khanK -- Fri Apr 20 20:02:16 2018 -0400
+*** OMG IT WORKS. good version here
+
+khanK -- Fri Apr 20 22:59:12 2018 -0400
+fixed dependicies' issues + changed the order a little to not allow heatmap to overwrite d3.  amazing progress tbh
+
+khanK -- Sat Apr 21 13:50:49 2018 -0400
+now i need to get the other datasets parsed and ready to go
+
+khanK -- Sat Apr 21 19:45:24 2018 -0400
+spotify stats compiled from: https://www.kaggle.com/nadintamer/top-tracks-of-2017/data
+
+khanK -- Sat Apr 21 20:03:09 2018 -0400
+car stats seemed bad in retrospect due to being limited, baby name stats (only up to 2008?) taken from: https://www.ssa.gov/OACT/babynames/
+khanK -- 2018-04-21 22:10:24
+devlog up to snuff
 
