@@ -77,7 +77,7 @@ var populateChart = function(d) {
         data[d].answer = "";
 
         // update score
-        score.innerHTML = parseInt(score.innerHTML) + parseInt(document.getElementById("time").innerHTML) + 1;
+        score.innerHTML = parseFloat(score.innerHTML) + parseFloat(document.getElementById("time").innerHTML) + 1;
       }
     }
   });
@@ -108,7 +108,7 @@ var reveal = function(d, end) {
   }
 
   // handle table
-  var rank = parseInt(d) + 1;
+  var rank = parseFloat(d) + 1;
   var tr = document.getElementById("tr_rank_" + rank);
   var answer_td = tr.getElementsByClassName("right")[0];
   var value_td = tr.getElementsByClassName("value")[0];
@@ -136,8 +136,8 @@ var capitalize = function(string) {
 var time = document.getElementById("time");
 var guess = document.getElementById("guess");
 var countdown = setInterval(function() {
-  if (parseInt(time.innerHTML) > 0) {
-    time.innerHTML = parseInt(time.innerHTML) - 1;
+  if (parseFloat(time.innerHTML) > 0) {
+    time.innerHTML = parseFloat(time.innerHTML) - 1;
   } else {
     stopGame();
   }
@@ -158,7 +158,7 @@ var total = function(data) {
 
   for (var d in data) {
     if (data[d].value) {
-      s += parseInt(data[d].value);
+      s += parseFloat(data[d].value);
     }
   }
 
@@ -209,7 +209,7 @@ var bargraph = function(data) {
   data.push("temp"); //cheaty
 
   barg_x.domain(data.map(function(d) { return d.answer; }));
-  barg_y.domain([0, d3.max(data, function(d) { return parseInt(d.value); }) * 1.25]);
+  barg_y.domain([0, d3.max(data, function(d) { return parseFloat(d.value); }) * 1.25]);
 
   data.pop(); //end cheaty
 
@@ -235,8 +235,8 @@ var bargraph = function(data) {
     .style("fill", "lightsteelblue")
     .attr("x", function(d) { return barg_x(d.answer) + 5; })
     .attr("width", barg_x.rangeBand() - 10)
-    .attr("y", function(d) { return barg_y(parseInt(d.value)) - barg_margin.bottom ; })
-    .attr("height", function(d) { return barg_height - barg_y(parseInt(d.value)); });
+    .attr("y", function(d) { return barg_y(parseFloat(d.value)) - barg_margin.bottom ; })
+    .attr("height", function(d) { return barg_height - barg_y(parseFloat(d.value)); });
 };
 
 
