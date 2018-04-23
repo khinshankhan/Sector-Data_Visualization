@@ -59,10 +59,6 @@ def quiz(val):
         
     return render_template('quiz.html', dataset_name=dsn, dataset_size=dss, data_file=dsf, chart_name=cn, time=int(time))
 
-@app.route('/visualization')
-def visualization():
-    return render_template('visualization.html', dataset_name="World Population", data_file='WorldPopulation.csv')
-
 query = "hi"
 array = ['hi', 'bye']
 @app.route('/search/<res>', methods=['POST','GET'])
