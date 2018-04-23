@@ -51,14 +51,14 @@ var populateChart = function(d) {
 
   arc.append("path")
     .attr("d", path)
-    .attr("id", function(d) { return "arc-" + d.data.answer.replace(" ", "-").toLowerCase(); })
+    .attr("id", function(d) { return "arc-" + d.data.answer.replace(/ /g, "-").toLowerCase(); })
     .attr("fill", "#707070")
     .attr("color", function(d) { return color(d.index); });
 
   arc.append("text")
     .attr("transform", function(d) { return "translate(" + label.centroid(d) + ")"; })
     .attr("dy", "0.35em")
-    .attr("id", function(d) { return "text-" + d.data.answer.replace(" ", "-").toLowerCase(); });
+    .attr("id", function(d) { return "text-" + d.data.answer.replace(/ /g, "-").toLowerCase(); });
 
   var guess = document.getElementById("guess");
   var score = document.getElementById("score");
@@ -91,7 +91,7 @@ var checkAnswer = function(guess, answer) {
 };
 
 var reveal = function(d, end) {
-  var pie_text = d3.select("#text-" + data[d].answer.replace(" ", "-").toLowerCase());
+  var pie_text = d3.select("#text-" + data[d].answer.replace(/ /g, "-").toLowerCase());
 
   if (!end) {
     // create transition
@@ -101,7 +101,7 @@ var reveal = function(d, end) {
 
     // handle pie chart
     pie_text.text(data[d].answer);
-    var pie_slice = d3.select("#arc-" + data[d].answer.replace(" ", "-").toLowerCase());
+    var pie_slice = d3.select("#arc-" + data[d].answer.replace(/ /g, "-").toLowerCase());
     pie_slice.transition(t).style("fill", pie_slice.attr("color"));
   } else {
     pie_text.style('fill', 'red').style('font-weight', 'bold').text(data[d].answer);

@@ -57,7 +57,9 @@ Sector
       </div>
       <div class="radio">
         <label><input type="radio" selection="Pie Chart" class="charts" name="graphs" checked>Pie Chart</label>
+        {% if hide_map == False %}
         <label><input type="radio" selection="Heat Map" class = "charts" name="graphs" disabled>Heat Map</label>
+        {% endif %}
         <label><input type="radio" selection="Bar Graph" class = "charts" name="graphs" disabled>Bar Graph</label>
       </div>
     </center>
@@ -84,18 +86,22 @@ Sector
     return d3.format(',.02f')(d) + 'M';
   }
 
-  var map = d3.geomap.choropleth()
-              .geofile('../../static/data/topojson/world/countries.json')
-              .colors(colorbrewer.YlOrBr[9])//9 bin multi hue color scheme
-              .column('value')//Country Populations
-              .legend(true)
-              .format(format)
-              .unitId('Country Code');
+    if("{{hide_map}}" == "False"){
+    var map = d3.geomap.choropleth()
+                .geofile('../../static/data/topojson/world/countries.json')
+                .colors(colorbrewer.YlOrBr[9])//9 bin multi hue color scheme
+                .column('value')//Country Populations
+                .legend(true)
+                {% if data_file == "WorldPopulation.csv" %}
+                .format(format)
+                {% endif %}
+                .unitId('Country Code');
 
-  d3.csv('../../static/data/{{ data_file | safe }}', function(error, data) {
-    data.pop()//remove the 'total' row from the csv
-    d3.select('#map').datum(data).call(map.draw, map);
-  });
+    d3.csv('../../static/data/{{ data_file | safe }}', function(error, data) {
+      data.pop()//remove the 'total' row from the csv
+      d3.select('#map').datum(data).call(map.draw, map);
+    });
+  }
 
   // For bar graphs
   d3.csv("../../static/data/{{ data_file | safe }}", function(d) {
