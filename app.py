@@ -52,6 +52,10 @@ def quiz(val):
         dsn = "the world's top %d most danceable songs of 2017"%(dss)
         cn = "Percentage of Danceability of World's %d Songs (2017)"%(dss)
         dsf = 'top_music2017.csv'
+    elif(value == '5'):
+        dsn = "The world's top %d countries with greatest population change"%(dss)
+        cn = "Top %d countries with the greatest change in population from 1960 to 2016"%(dss)
+        dsf = 'DeltaPopulation.csv'
         
     return render_template('quiz.html', dataset_name=dsn, dataset_size=dss, data_file=dsf, chart_name=cn, time=int(time))
 
