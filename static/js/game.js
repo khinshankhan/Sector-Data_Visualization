@@ -11,10 +11,6 @@ var svg = d3.select("svg"),
     radius = Math.min(width, height) / 2,
     g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
-// var bar_svg = d3.select("#barg"),
-//     bar_width = bar_svg.attr("width"),
-//     bar_height = bar_svg.attr("height"),
-//     bar_g = bar_svg.append("g").attr("transform", "translate(" + bar_width / 2 + "," + bar_height / 2 + ")");
 
 var pie = d3.pie()
     .sort(null)
@@ -189,32 +185,54 @@ var changeChart = function(){
 
 
 // BAR GRAPH STUFF
-var bargraph = function(d) {
-  var bar_x = d3.scaleBand().rangeRound([0, bar_width]).padding(0.1),
-      bar_y = d3.scaleLinear().rangeRound([bar_height, 0]);
+var barg_margin = {top: 20, right: 20, bottom: 50, left: 40},
+    barg_width = 500 - barg_margin.left - barg_margin.right,
+    barg_height = 500 - barg_margin.top - barg_margin.bottom;
 
-  bar_x.domain([0, data.length]);
-  bar_y.domain([0, d3.max(data)]);
+var barg_svg = d3.select("#graph").append("svg")
+      .attr("width", barg_width + barg_margin.left + barg_margin.right)
+      .attr("height", barg_height + barg_margin.top + barg_margin.bottom)
+      .append("g")
+      .attr("transform",
+            "translate(" + barg_margin.left + "," + barg_margin.top + ")");
 
-  bar_g.append("g")
+var barg_x = d3.scale.ordinal().rangeRoundBands([0, barg_width], .05), //d3.scaleBand().rangeRound([0, barg_width]).padding(0.1),
+    barg_y = d3.scale.linear().range([barg_height, 0]);//d3.scaleLinear().rangeRound([barg_height, 0]);
+
+var barg_g = barg_svg.append("g")
+    .attr("transform", "translate(" + barg_margin.left + "," + barg_margin.top + ")");
+
+
+
+var bargraph = function(data) {
+  console.log(data);
+
+  barg_x.domain(data.map(function(d) { return d.answer; }));
+  barg_y.domain([0, d3.max(data, function(d) { return parseInt(d.value); })]);
+
+  barg_g.append("g")
     .attr("class", "axis axis--x")
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x));
+    .attr("transform", "translate(0," + (barg_height - barg_margin.bottom) + ")")
+    .call(d3.axisBottom(barg_x))
+    .selectAll("text")
+    .style("text-anchor", "end")
+    .attr("dx", "-.8em")
+    .attr("dy", "-.55em")
+    .attr("transform", "rotate(-90)" );
 
-  bar_g.append("g")
-    .attr("class", "axis axis--y");
+  // barg_g.append("g")
+  //   .attr("class", "axis axis--y")
+  //   .attr("transform", "translate(" +  50 + ", 0)")
+  //   .call(d3.axisLeft(barg_y).ticks(10, "%"));
 
-  bar_g.selectAll(".bar")
+  barg_g.selectAll("bar")
     .data(data)
     .enter().append("rect")
-    .attr("class", "bar")
-    .attr("x", function(d) { return x(d.letter); })
-    .attr("y", function(d) { return y(d.frequency); })
-    .attr("width", x.bandwidth())
-    .attr("height", function(d) { return height - y(d.frequency); });
-
-
-  console.log(d);
+    .style("fill", "lightsteelblue")
+    .attr("x", function(d) { return barg_x(d.answer); })
+    .attr("width", barg_x.rangeBand())
+    .attr("y", function(d) { return barg_y(parseInt(d.value)) - barg_margin.bottom ; })
+    .attr("height", function(d) { return barg_height - barg_y(parseInt(d.value)); });
 };
 
 
