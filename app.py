@@ -39,14 +39,20 @@ def quiz(val):
     if(value == '1'):
         dsn = "the world's top %d most populous countries"%(dss)
         cn = "Percentage of Population of the %d Most Populous Countries"%(dss)
+        dsf = 'WorldPopulation.csv'
     elif(value == '2'):
-        dsn = "the Europe's top %d most popular car models"%(dss)
-        cn = "Percentage of Popularity of Europe's %d most Popular Car Models"%(dss)
+        dsn = "the world's top %d most popular male baby names of 2008"%(dss)
+        cn = "Percentage of Popularity of World's %d Male Baby names"%(dss)
+        dsf = 'top_male_baby_names2008.csv'
     elif(value == '3'):
-        dsn = "the world's top %d most popular songs"%(dss)
-        cn = "Percentage of Population of the %d Most Populous Countries"%(dss)
-
-    dsf = 'WorldPopulation.csv'
+        dsn = "the world's top %d most popular female baby names of 2008"%(dss)
+        cn = "Percentage of Popularity of World's %d Female Baby names"%(dss)
+        dsf = 'top_female_baby_names2008.csv'
+    elif(value == '4'):
+        dsn = "the world's top %d most danceable songs of 2017"%(dss)
+        cn = "Percentage of Danceability of World's %d Songs (2017)"%(dss)
+        dsf = 'top_music2017.csv'
+        
     return render_template('quiz.html', dataset_name=dsn, dataset_size=dss, data_file=dsf, chart_name=cn, time=int(time))
 
 @app.route('/visualization')
