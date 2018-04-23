@@ -144,6 +144,10 @@ spotify stats compiled from: https://www.kaggle.com/nadintamer/top-tracks-of-201
 
 khanK -- Sat Apr 21 20:03:09 2018 -0400
 car stats seemed bad in retrospect due to being limited, baby name stats (only up to 2008?) taken from: https://www.ssa.gov/OACT/babynames/
+
 khanK -- 2018-04-21 22:10:24
 devlog up to snuff
+
+khanK -- 2018-04-22 23:11:52
+james and i parsed the two datatsets, now to make it work with the rest of the code
 
