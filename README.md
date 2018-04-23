@@ -26,8 +26,6 @@ https://www.ssa.gov/OACT/babynames/
 Spotify Stats compiled by Kaggle:
 https://www.kaggle.com/nadintamer/top-tracks-of-2017/data
 
-Shows the population of many countries. Goes from 1960 to 2016, may try to find something more recent, but easy-to-use data so we may keep it.
-
 #### **Component Map:**
 ##### **Templates:**
 
