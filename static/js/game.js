@@ -205,11 +205,11 @@ var barg_g = barg_svg.append("g")
 
 
 var bargraph = function(data) {
-  console.log(data);
   data.push("temp"); //cheaty
 
-  barg_x.domain(data.map(function(d) { return d.answer; }));
+  barg_x.domain(data.map(function(d) { return d.answer; })); // needs the cheat for extra slot
   barg_y.domain([0, d3.max(data, function(d) { return parseFloat(d.value); }) * 1.25]);
+  var color = d3.scaleSequential(d3.interpolateRainbow).domain([0, data.length]);
 
   data.pop(); //end cheaty
 
@@ -229,10 +229,12 @@ var bargraph = function(data) {
     .attr("transform", "translate(" + barg_margin.left + ", 0)")
     .call(d3.axisLeft(barg_y).ticks(10, "g"));
 
+  var i = 0;
+
   barg_g.selectAll("bar")
     .data(data)
     .enter().append("rect")
-    .style("fill", "lightsteelblue")
+    .style("fill", function(d) { return color(i++); })
     .attr("x", function(d) { return barg_x(d.answer) + 5; })
     .attr("width", barg_x.rangeBand() - 10)
     .attr("y", function(d) { return barg_y(parseFloat(d.value)) - barg_margin.bottom ; })
