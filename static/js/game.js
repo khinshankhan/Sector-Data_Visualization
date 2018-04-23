@@ -147,6 +147,10 @@ var stopGame = function() {
   guess.disabled = true;
   revealAll();
   clearInterval(countdown);
+  var temp = document.getElementsByName("graphs");
+  for (var i = 0; i < temp.length; i++) {
+    temp[i].disabled = false;
+  }
 };
 
 var numberFormat = function (s) {
